@@ -1,0 +1,38 @@
+
+.tableBody
+{
+    border: 1px solid black;
+    margin-top: 10px;
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-bottom: 10px;
+}
+
+.tableHeader
+{
+    border: 1px solid black;
+    margin-left: 300px;
+    margin-right: 300px;  
+    font-size:30px;
+    background-color: lightskyblue;
+    color: white;
+}
+
+thead td
+{
+    text-align: center;
+    width: 27%;
+}
+
+
+tbody tr
+{
+    text-align: center;
+}
+
+.scrollTable
+{
+    border-bottom: 1px solid rgb(210, 210, 210);
+
+    width: 100%;
+}
