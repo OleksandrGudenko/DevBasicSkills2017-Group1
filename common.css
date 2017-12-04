@@ -9,7 +9,7 @@
 /* roboto-700 - latin */
 @font-face
     {
-    font-family: 'Roboto-700';
+    font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
     src: local('Roboto Bold'), local('Roboto-Bold'),
@@ -19,7 +19,7 @@
 
 body
 {
-    background-color: gray;
+    background-color: rgb(174, 174, 174);
 }
 
 
@@ -33,7 +33,7 @@ body
 {
     width: 1000px;
     background-color: white;
-
+    margin-top: -30px;
     margin-left: auto;
     margin-right: auto;    
 }
@@ -43,39 +43,23 @@ body
     clear: both;
 }
 
-.upper-menu
-{
-    margin-left: auto;
-    margin-right: auto;
-    height: 10px;
-    border-top: 1px solid black;
-    width:1000px;
-}
-.bottom-menu
-{
-    
-    margin-left: auto;
-    margin-right: auto;
-    width: 1000px;
-    background-color:white;
-}
-
-
 
 .UpperRow 
 {
     background-color: white; /* Green */
     border: none;
     color: black;
-    border: 2px solid black;
+    border: 3px solid black;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 20px;
     width: 32%;
+    margin-bottom: 5px;
     float: left;
     font-family: "Roboto", sans-serif;
+    box-shadow: 0 8px 10px 0 rgba(0,0,0,1), 0 8px 10px 0 rgba(0,0,0,0.19);
 }
 
 .UpperRow:first-child
@@ -88,7 +72,7 @@ body
     background-color: white; /* Green */
     border: none;
     color: black;
-    border: 2px solid black;
+    border: 3px solid black;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -97,6 +81,7 @@ body
     width: 28%;
     float: left;
     font-family: "Roboto", sans-serif;
+    box-shadow: 0 8px 10px 0 rgba(0,0,0,1), 0 8px 10px 0 rgba(0,0,0,0.19);
 }
 
 .BottomRow:first-child
@@ -110,19 +95,25 @@ button:hover
     background-color: lightskyblue;
 }
 
+button:active {
+    background-color: lightskyblue;
+    box-shadow: 0 5px #666;
+    transform: translateY(2px);
+  }
+
 h1 
 {
     text-align: center;
     margin-bottom: 20px;
     border-bottom: 1px solid black;
-    font-family: "Roboto-700", sans-serif;
-    font-size: 35px;
+    font-family: "Roboto Bold", sans-serif;
+    font-size: 45px;
+
 }
 
 h2
 {
     margin-top: 40px;
-    background-color: white;
     text-align: center;
     font-family: "Roboto", sans-serif;
     font-size: 25px;
