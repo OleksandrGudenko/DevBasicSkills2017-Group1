@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+            <title>Math Tools</title>
+            <link rel="stylesheet" type="text/css" href="common.css">
+            <link rel="stylesheet" type="text/css" href="NumberSystemOutput.css">
+    </head>
+
+<body>
+    <div class="contents">
+            <h1>Math Tools</h1>
+            
+            <div>
+                    <button class="UpperRow">Number System Converter</button>
+                    <button class="UpperRow">Number System Output</button>
+                    <button class="UpperRow">Combinatorics</button>
+                    <div class="endLine"></div>
+            </div>
+            <div>
+                    <button class="BottomRow">Truth Tables</button>
+                    <button class="BottomRow">Random Values</button>    
+                    <button class="BottomRow">Temperature Converter</button>
+                    <div class="endLine"></div>                                            
+            </div>
+        
+            <h2>Number System System Output</h2>
+
+        <div class="tableHeader">
+            <table>
+                <thead>
+                        <td>DEC </td>
+                        <td>BIN</td>
+                        <td>OCT</td>
+                        <td>HEX</td>
+                    
+                </thead>
+
+            </table>
+        </div>
+        
+    
+        <div class="tableBody" style="overflow:auto; height:400px;">
+                    
+            <table class="scrollTable">
+                <tbody id="newRowsAndCells">
+                   
+                </tbody>
+            </table>
+
+        
+            <button onclick="createRowFunction()">Click Me</button>
+        
+        <script> 
+
+            var bases = [10, 2, 8, 16];
+
+            function createRowFunction()
+            {
+                var table = document.getElementById("newRowsAndCells");
+
+                for(var y = 0; y <= 50; y++)
+                {
+                    var row = table.insertRow(y);
+
+                    for(var x = 0; x < 4; x++)
+                    {
+                        var cell = row.insertCell(x);
+
+                        cell.innerHTML = y +"%"+  bases[x];
+                    }
+                }
+            }
+        </script>
+            
+        </div>
+    </div>
+</body>
+
+</html>
