@@ -37,25 +37,21 @@ tbody tr
     width: 100%;
 }
 
-.emptySpace200px
+.emptySpace50px
 {
-    min-height: 200px; 
-}
-
-.emptySpace70px
-{
-
-
-    min-height: 70px; 
-
+    min-height: 50px; 
 }
 
 .emptySpace30px
 {
-    min-height: 30px;
-}
 
-.divider{
-    margin-left:-10px;
+
+    min-height: 30px; 
 
 }
+
+.emptySpace15px
+{
+    min-height: 15px;
+}
+
