@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+            <title>Math Tools</title>
+            <link rel="stylesheet" type="text/css" href="common.css">
+    </head>
+
+    <script type="text/javascript">
+        
+        //NumberSystem //DEC     BIN     OCT     HEX
+        var ns =        [2,      8,      10,      16];
+
+        var letters = ['A','B','C','D','E','F'];
+        var numbers = [10 ,11 ,12 ,13 ,14 ,15 ];
+
+        var conversionRates = [[0.5,2],[1,1],[1,1],[1,1]];
+
+        function newInput(thisInput, thisOutput)
+        {
+            var input = document.getElementById(thisInput);
+            var output = document.getElementById(thisOutput);
+
+            var conversionRate = conversionRates[0][thisInput];
+
+            output.value = (input.valueAsNumber * conversionRate);
+        }
+
+        function ConvertToDec(input, base)
+        {
+            input += "";
+            var value = [];
+            var result = 0;
+
+            value = ToArray(input);
+
+            if(base == 16)
+                value = SwapValues(value, letters, numbers);
+
+            for(var i = 0; i < value.length; i++)
+                result += value[i] * Math.pow(base, ((value.length - 1) - i));
+            
+            for(var i = 0; i < ns.length; i++)
+                console.log(Convert(result, ns[i]));
+            
+            return result;
+        }
+
+        function ToArray(input)
+        {
+            var result = [];
+
+            for(var i = 0; i < input.length; i++)
+                result[result.length] = input[i];
+
+            return result;
+        }
+
+        function Convert(input, base)
+        {
+            var value = [];
+            var result = "";
+
+            while(input > 0)
+            {
+                value[value.length] = (input % base);
+                input = Math.floor(input / base);   
+            }
+
+            if(value.length == 0)
+                value = [0];
+
+            if(base == 2)
+            {
+                while(value.length % 4 != 0)
+                    value[value.length] = 0; 
+            }
+
+            if(base == 16)
+                value = SwapValues(value, numbers, letters);
+
+            value.reverse();
+
+            for(var i = 0; i < value.length; i++)
+                result += value[i];
+
+            return result;
+        }
+
+        function SwapValues(input, from, to)
+        {
+            var result = [];
+
+            for(var i = 0; i < input.length; i++)
+            {
+                result[result.length] = input[i];
+
+                for(var j = 0; j < from.length; j++)
+                {
+                    if(result[i] == from[j])
+                        result[i] = to[j];
+                }
+            }
+
+            return result;
+        }
+
+    </script>
+
+    <body onload="ConvertToDec('0',10)">
+
+        <div class="contents">
+            <h1>Math Tools</h1>
+            
+            <div>
+                    <button class="UpperRow">Number System Converter</button>
+                    <button class="UpperRow">Number System Output</button>
+                    <button class="UpperRow">Combinatorics</button>
+                    <div class="endLine"></div>
+            </div>
+
+            <div>
+                    <button class="BottomRow">Truth Tables</button>
+                    <button class="BottomRow">Random Values</button>    
+                    <button class="BottomRow">Temperature Converter</button>
+                    <div class="endLine"></div>                                            
+            </div>
+        
+            <h2>Number System Converter</h2>
+            
+            <div>
+                <input id="0" type="number" oninput="newInput('0', '1')"> <=>
+                <input id="1" type="number" oninput="newInput('1', '0')">
+            </div>  
+
+        </div>
+    </body>
+
+</html>
