@@ -45,16 +45,6 @@
             return result;
         }
 
-        function ToArray(input)
-        {
-            var result = [];
-
-            for(var i = 0; i < input.length; i++)
-                result[result.length] = input[i];
-
-            return result;
-        }
-
         function Convert(input, base)
         {
             var value = [];
@@ -69,14 +59,14 @@
             if(value.length == 0)
                 value = [0];
 
+            if(base == 16)
+                value = SwapValues(value, numbers, letters);
+
             if(base == 2)
             {
                 while(value.length % 4 != 0)
                     value[value.length] = 0; 
             }
-
-            if(base == 16)
-                value = SwapValues(value, numbers, letters);
 
             value.reverse();
 
@@ -92,14 +82,32 @@
 
             for(var i = 0; i < input.length; i++)
             {
-                result[result.length] = input[i];
+                var found = false;
 
                 for(var j = 0; j < from.length; j++)
                 {
-                    if(result[i] == from[j])
-                        result[i] = to[j];
+                    if(input[i] == from[j])
+                    {
+                        result[result.length] = to[j]; 
+                        found = true;
+
+                        break;
+                    }
                 }
+
+                if(!found)
+                    result[result.length] = input[i];
             }
+
+            return result;
+        }
+
+        function ToArray(input)
+        {
+            var result = [];
+
+            for(var i = 0; i < input.length; i++)
+                result[result.length] = input[i];
 
             return result;
         }
