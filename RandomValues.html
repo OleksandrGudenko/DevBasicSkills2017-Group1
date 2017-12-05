@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Math Tools</title>
+    <link rel="stylesheet" type="text/css" href="common.css">
+</head>
+
+<script>      
+    
+    var generatedNumbers = [];
+    var timesGenerated  = [];
+
+    var table = document.getElementById("dynamicTable");
+
+    function Generate()
+    {
+        var min = document.getElementById("min").valueAsNumber;
+        var max = document.getElementById("max").valueAsNumber;
+
+        if(min > max)
+            min = max;
+
+        var newNumber = Math.floor(Math.random()*(max-min+1)+min)
+
+        console.log(newNumber);
+        
+        if(CompareNumbers(newNumber) == false)
+        {
+            console.log(CompareNumbers(newNumber));
+        } else {
+            
+        }
+    }
+
+    function CompareNumbers(input)
+    {
+        for(var i = 0; i < generatedNumbers.length; i++)
+        {
+            if(newNumber == generatedNumbers[i])
+            {    
+                timesGenerated[i] ++;
+
+                table.row(i).cell(1).innerHTML = timesGenerated[i].toString();
+
+                return i;
+            }
+        }
+        return false;
+    }
+
+
+/*
+        var row = table.insertRow();
+
+        row.insertCell(0).innerHTML = Math.floor(Math.random()*(max-min+1)+min);
+        row.insertCell(1).innerHTML = "0";
+*/
+
+//insertRow(1) places a new row on currently existing row[1], pushing row[1] to row[2]
+/*
+        var row = table.insertRow(0);
+            row.insertCell().innerHTML = "0";
+        var row = table.insertRow(1);
+            row.insertCell().innerHTML = "2";
+        var row = table.insertRow(1);
+            row.insertCell().innerHTML = "1";
+
+        Result: 0
+                1
+                2
+*/       
+
+
+/*
+What you want is the splice function on the native array object.
+
+arr.splice(index, 0, item); will insert item into arr at the specified index (deleting 0 items first, that is, it's just an insert).
+
+In this example we will create an array and add an element to it into index 2:
+
+var arr = [];
+arr[0] = "Jani";
+arr[1] = "Hege";
+arr[2] = "Stale";
+arr[3] = "Kai Jim";
+arr[4] = "Borge";
+
+console.log(arr.join());
+arr.splice(2, 0, "Lene");
+console.log(arr.join());
+
+The output of the code above will be:
+
+Jani,Hege,Stale,Kai Jim,Borge
+Jani,Hege,Lene,Stale,Kai Jim,Borge
+
+*/
+
+</script>
+
+<body>
+    <div class="contents">
+
+        <h1>Math Tools</h1>
+
+        <div>
+            <form method="get" action="NumberSystemConverter.html">
+            <button href="NumberSystemConverter.html" class="UpperRow1st">Number System Converter</button>
+            </form>
+            <div class="divider"></div>
+            <form method="get" action="NumberSystemOutput.html">
+            <button href="" class="UpperRow">Number System Output</button>
+            </form>
+            <form method="get" action="NumberSystemOutput.html">
+            <button class="UpperRow">Combinatorics</button>
+            </form>
+            <div class="endLine"></div>
+        </div>
+        <div>
+            <form method="get" action="FrontPage.html">
+            <button class="BottomRow1st">Truth Tables</button>
+            </form>
+            <form method="get" action="FrontPage.html">
+            <button class="BottomRow">Random Values</button>  
+            </form>
+            <form method="get" action="FrontPage.html">
+            <button class="BottomRow">Temperature Converter</button>
+            </form>
+            <div class="endLine"></div>                                            
+        </div>
+
+        <div>
+
+            <button onclick="Generate()">Generate</button>
+
+            <div class="centeredInput">
+                <input id="min" type="number"> <========>
+                <input id="max" type="number">
+            </div>  
+
+            <div>
+                <table style="width: 50%">
+                    <thead>
+                        <tr>
+                            <td>Random value</td>
+                            <td>Times generated</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <div style="overflow:auto; height:390px;">     
+                <table style="width: 50%">
+                    <tbody id="dynamicTable"></tbody>
+                </table>      
+            </div>
+
+        </div>
+
+        <div class="pageBottom"><h3>Developed by Oleksandr Gudenko and Florian Brandsma</h3></div>
+
+    </div>
+
+</body>
+
+</html>
