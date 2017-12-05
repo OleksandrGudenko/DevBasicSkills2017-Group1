@@ -1,93 +1,142 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-            <title>Math Tools</title>
-            <link rel="stylesheet" type="text/css" href="common.css">
-            <link rel="stylesheet" type="text/css" href="NumberSystemOutput.css">
-    </head>
+<head>
+    <title>Math Tools</title>
+    <link rel="stylesheet" type="text/css" href="common.css">
+    <link rel="stylesheet" type="text/css" href="NumberSystemOutput.css">
+</head>
 
-<body>
+<script>      
+    //NumberSystem //DEC     BIN     OCT     HEX
+    var ns =        [10,      2,      8,      16];
+
+    var letters = ['A','B','C','D','E','F'];
+    var numbers = [10 ,11 ,12 ,13 ,14 ,15 ];
+
+    function CreateTable()
+    {
+        var table = document.getElementById("newRowsAndCells");
+
+        for(var y = 0; y <= 50; y++)
+        {
+            var row = table.insertRow(y);
+
+            for(var x = 0; x < 4; x++)
+            {
+                var cell = row.insertCell(x);
+
+                cell.innerHTML = Convert(y.toString(), ns[x]);
+            }
+        }
+    }
+
+    function Convert(input, base)
+    {
+        var value = [];
+        var result = "";
+
+        while(input > 0)
+        {
+            value[value.length] = (input % base);
+            input = Math.floor(input / base);   
+        }
+
+        if(value.length == 0)
+            value = [0];
+
+        if(base == 2)
+        {
+            while(value.length % 4 != 0)
+                value[value.length] = 0; 
+        }
+
+        if(base == 16)
+            value = SwapValues(value, numbers, letters);
+
+        value.reverse();
+
+        for(var i = 0; i < value.length; i++)
+            result += value[i];
+
+        return result;
+    }
+
+    function SwapValues(input, from, to)
+    {
+        var result = [];
+
+        for(var i = 0; i < input.length; i++)
+        {
+            result[result.length] = input[i];
+
+            for(var j = 0; j < from.length; j++)
+            {
+                if(result[i] == from[j])
+                    result[i] = to[j];
+            }
+        }
+
+        return result;
+    }
+    
+</script>
+
+<body onload=CreateTable()>
     <div class="contents">
-            <h1>Math Tools</h1>
-            
-            <div>
-                    <form method="get" action="NumberSystemConverter.html">
-                    <button href="NumberSystemConverter.html" class="UpperRow1st">Number System Converter</button>
-                    </form>
-                    <div class="divider"></div>
-                    <form method="get" action="NumberSystemOutput.html">
-                    <button href="" class="UpperRow">Number System Output</button>
-                    </form>
-                    <form method="get" action="NumberSystemOutput.html">
-                    <button class="UpperRow">Combinatorics</button>
-                    </form>
-                    <div class="endLine"></div>
-            </div>
-            <div>
-                    <form method="get" action="FrontPage.html">
-                    <button class="BottomRow1st">Truth Tables</button>
-                    </form>
-                    <form method="get" action="FrontPage.html">
-                    <button class="BottomRow">Random Values</button>  
-                    </form>
-                    <form method="get" action="FrontPage.html">
-                    <button class="BottomRow">Temperature Converter</button>
-                    </form>
-                    <div class="endLine"></div>                                            
-            </div>
-        
-            <div class="emptySpace70px"></div>
-            <h2>Number System System Output</h2>
-            <div class="emptySpace30px"></div>
+
+        <h1>Math Tools</h1>
+
+        <div>
+            <form method="get" action="NumberSystemConverter.html">
+            <button href="NumberSystemConverter.html" class="UpperRow1st">Number System Converter</button>
+            </form>
+            <div class="divider"></div>
+            <form method="get" action="NumberSystemOutput.html">
+            <button href="" class="UpperRow">Number System Output</button>
+            </form>
+            <form method="get" action="NumberSystemOutput.html">
+            <button class="UpperRow">Combinatorics</button>
+            </form>
+            <div class="endLine"></div>
+        </div>
+        <div>
+            <form method="get" action="FrontPage.html">
+            <button class="BottomRow1st">Truth Tables</button>
+            </form>
+            <form method="get" action="FrontPage.html">
+            <button class="BottomRow">Random Values</button>  
+            </form>
+            <form method="get" action="FrontPage.html">
+            <button class="BottomRow">Temperature Converter</button>
+            </form>
+            <div class="endLine"></div>                                            
+        </div>
+        <div class="emptySpace70px"></div>
+
+        <h2>Number System System Output</h2>
+
+        <div class="emptySpace30px"></div>
+
         <div class="tableHeader">
             <table>
                 <thead>
-                        <td>DEC </td>
-                        <td>BIN</td>
-                        <td>OCT</td>
-                        <td>HEX</td>
-                    
+                    <td>DEC</td>
+                    <td>BIN</td>
+                    <td>OCT</td>
+                    <td>HEX</td>
                 </thead>
-
             </table>
         </div>
         
-    
         <div class="tableBody" style="overflow:auto; height:500px;">
                     
             <table class="scrollTable">
-                <tbody id="newRowsAndCells">
-                   
-                </tbody>
-            </table>
-        
-        <script> 
-
-            var bases = [10, 2, 8, 16];
-
-            function createRowFunction()
-            {
-                var table = document.getElementById("newRowsAndCells");
-
-                for(var y = 0; y <= 50; y++)
-                {
-                    var row = table.insertRow(y);
-
-                    for(var x = 0; x < 4; x++)
-                    {
-                        var cell = row.insertCell(x);
-
-                        cell.innerHTML = y +"%"+  bases[x];
-                    }
-                }
-            }
-            window.onload = createRowFunction();
-        </script>
-            
+                <tbody id="newRowsAndCells"></tbody>
+            </table>      
         </div>
         <div class="emptySpace200px"></div>
 
-        <div class="float:right">  developed by Oleksandr Gudenko and Florian Brandsma </div>
+        <div class="float:right">  Developed by Oleksandr Gudenko and Florian Brandsma </div>
     </div>
 </body>
 
