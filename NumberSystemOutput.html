@@ -11,20 +11,34 @@
             <h1>Math Tools</h1>
             
             <div>
-                    <button class="UpperRow">Number System Converter</button>
-                    <button class="UpperRow">Number System Output</button>
+                    <form method="get" action="FrontPage.html">
+                    <button href="FrontPage.html" class="UpperRow1st">Number System Converter</button>
+                    </form>
+                    <div class="divider"></div>
+                    <form method="get" action="NumberSystemOutput.html">
+                    <button href="" class="UpperRow">Number System Output</button>
+                    </form>
+                    <form method="get" action="NumberSystemOutput.html">
                     <button class="UpperRow">Combinatorics</button>
+                    </form>
                     <div class="endLine"></div>
             </div>
             <div>
-                    <button class="BottomRow">Truth Tables</button>
-                    <button class="BottomRow">Random Values</button>    
+                    <form method="get" action="FrontPage.html">
+                    <button class="BottomRow1st">Truth Tables</button>
+                    </form>
+                    <form method="get" action="FrontPage.html">
+                    <button class="BottomRow">Random Values</button>  
+                    </form>
+                    <form method="get" action="FrontPage.html">
                     <button class="BottomRow">Temperature Converter</button>
+                    </form>
                     <div class="endLine"></div>                                            
             </div>
         
+            <div class="emptySpace70px"></div>
             <h2>Number System System Output</h2>
-
+            <div class="emptySpace30px"></div>
         <div class="tableHeader">
             <table>
                 <thead>
@@ -39,7 +53,7 @@
         </div>
         
     
-        <div class="tableBody" style="overflow:auto; height:400px;">
+        <div class="tableBody" style="overflow:auto; height:500px;">
                     
             <table class="scrollTable">
                 <tbody id="newRowsAndCells">
@@ -47,8 +61,7 @@
                 </tbody>
             </table>
 
-        
-            <button onclick="createRowFunction()">Click Me</button>
+            <button onclick="createRowFunction()">Recreate Table Again</button>
         
         <script> 
 
@@ -70,9 +83,12 @@
                     }
                 }
             }
+            window.onload = createRowFunction();
         </script>
             
         </div>
+        <div class="emptySpace200px"></div>
+
     </div>
 </body>
 

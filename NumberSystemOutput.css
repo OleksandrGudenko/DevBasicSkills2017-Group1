@@ -21,7 +21,7 @@
 thead td
 {
     text-align: center;
-    width: 27%;
+    width: 27.2%;
 }
 
 
@@ -35,4 +35,27 @@ tbody tr
     border-bottom: 1px solid rgb(210, 210, 210);
 
     width: 100%;
+}
+
+.emptySpace200px
+{
+    min-height: 200px; 
+}
+
+.emptySpace70px
+{
+
+
+    min-height: 70px; 
+
+}
+
+.emptySpace30px
+{
+    min-height: 30px;
+}
+
+.divider{
+    margin-left:-10px;
+
 }

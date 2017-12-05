@@ -35,7 +35,7 @@ body
     background-color: white;
     margin-top: -30px;
     margin-left: auto;
-    margin-right: auto;    
+    margin-right: auto;  
 }
 
 .endLine
@@ -57,14 +57,29 @@ body
     font-size: 20px;
     width: 32%;
     margin-bottom: 5px;
-    float: left;
+    float:left;
+
     font-family: "Roboto", sans-serif;
     box-shadow: 0 8px 10px 0 rgba(0,0,0,1), 0 8px 10px 0 rgba(0,0,0,0.19);
 }
-
-.UpperRow:first-child
+.UpperRow1st
 {
-    margin-left:19px;
+    background-color: white; /* Green */
+    border: none;
+    color: black;
+    border: 3px solid black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    width: 32%;
+    margin-bottom: 5px;
+    margin-left: 19px;
+    float: left;
+
+    font-family: "Roboto", sans-serif;
+    box-shadow: 0 8px 10px 0 rgba(0,0,0,1), 0 8px 10px 0 rgba(0,0,0,0.19);
 }
 
 .BottomRow
@@ -79,15 +94,28 @@ body
     display: inline-block;
     font-size: 20px;
     width: 28%;
-    float: left;
+    float:left;
     font-family: "Roboto", sans-serif;
     box-shadow: 0 8px 10px 0 rgba(0,0,0,1), 0 8px 10px 0 rgba(0,0,0,0.19);
 }
-
-.BottomRow:first-child
+.BottomRow1st
 {
-    margin-left: 85px;
+    background-color: white; /* Green */
+    border: none;
+    color: black;
+    border: 3px solid black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    width: 28%;
+    float:left;
+    font-family: "Roboto", sans-serif;
+    box-shadow: 0 8px 10px 0 rgba(0,0,0,1), 0 8px 10px 0 rgba(0,0,0,0.19);
+    margin-left:85px;
 }
+
 
 
 button:hover
@@ -104,6 +132,7 @@ button:focus
   {
       background-color: lightskyblue;
   }
+  
 h1 
 {
     text-align: center;
