@@ -116,16 +116,18 @@ body
     margin-left:85px;
 }
 
+.actionButton:active
+{
+    background-color: lightskyblue;
+    box-shadow: 0 5px #666;
+    transform: translateY(2px);
+}
+
 button:hover
 {
     background-color: lightskyblue;
 }
 
-button:active {
-    background-color: lightskyblue;
-    box-shadow: 0 5px #666;
-    transform: translateY(2px);
-  }
 button:focus
   {
       background-color: lightskyblue;
@@ -160,6 +162,10 @@ h3
     border-bottom: 1px solid black;
 }
 
+.emptySpace100px
+{
+    min-height: 100px;
+}
 .emptySpace50px
 {
     min-height: 50px; 
@@ -176,4 +182,10 @@ h3
 .emptySpace15px
 {
     min-height: 15px;
+}
+
+.centeredInput
+{
+    margin-left: 300px;
+    margin-right: 300px;
 }

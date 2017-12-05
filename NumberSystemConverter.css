@@ -16,7 +16,59 @@
     margin-left:20px;
 }
 
-.centeredInput
+.table1
 {
-    margin-left: 300px;
+
+    width: 170px;
+    float:left;
+}
+
+.table2
+{
+
+    width: 170px;
+    float:right;
+}
+
+.convertionBar
+{
+    text-align: center;
+    width: 100%;
+    Padding: 3px;
+    background-color: white;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.convertionBarFirst
+{
+    text-align: center;
+    width: 100%;
+    Padding: 3px;
+    background-color: white;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.convertionBarLast
+{
+    text-align: center;
+    width: 100%;
+    Padding: 3px;
+    background-color: white;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.stockInputSize1
+{
+    width: 170px;
+    float:left;
+}
+.stockInputSize2
+{
+    width: 170px;
+    float:right;
 }
