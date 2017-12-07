@@ -1,7 +1,8 @@
-.onPageButton1st
+
+.onPageButton
 {
     background-color: lightskyblue;
-    border: black;
+    border: none;
     color: black;
     border: 3px solid black;
     padding: 15px 32px;
@@ -13,7 +14,7 @@
     float:left;
     font-family: "Roboto", sans-serif;
     box-shadow: 0 8px 10px 0 rgba(0,0,0,1), 0 8px 10px 0 rgba(0,0,0,0.19);
-    margin-left:20px;
+    margin-left: 20px;
 }
 
 .convertionBar
