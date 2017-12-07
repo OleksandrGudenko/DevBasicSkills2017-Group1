@@ -24,7 +24,7 @@
             for(var x = 0; x < ns.length; x++)
             {
                 var cell = row.insertCell(x);
-
+                cell.className="column" + x;
                 cell.innerHTML = Convert(y.toString(), ns[x]);
             }
         }
@@ -87,29 +87,40 @@
         <h1>Math Tools</h1>
 
         <div>
-            <form method="get" action="NumberSystemConverter.html">
-            <button href="NumberSystemConverter.html" class="UpperRow1st">Number System Converter</button>
-            </form>
-            <div class="divider"></div>
-            <form method="get" action="NumberSystemOutput.html">
-            <button href="" class="onPageButton">Number System Output</button>
-            </form>
-            <form method="get" action="NumberSystemOutput.html">
-            <button class="UpperRow">Combinatorics</button>
-            </form>
-            <div class="endLine"></div>
-        </div>
-        <div>
-            <form method="get" action="FrontPage.html">
-            <button class="BottomRow1st">Truth Tables</button>
-            </form>
-            <form method="get" action="FrontPage.html">
-            <button class="BottomRow">Random Values</button>  
-            </form>
-            <form method="get" action="FrontPage.html">
-            <button class="BottomRow">Temperature Converter</button>
-            </form>
-            <div class="endLine"></div>                                            
+                <div class="actionButton";>
+                    <form method="get" action="NumberSystemConverter.html">
+                    <button href="NumberSystemConverter.html" class="UpperRow1st"  class="actionButton">Number System Converter</button>
+                    </form>
+                </div>
+                <div class="actionButton";>
+                    <form method="get" action="NumberSystemOutput.html">
+                    <button href="" class="onPageButton"   class="actionButton">Number System Output</button>
+                    </form>
+                </div>
+                <div class="actionButton";>
+                    <form method="get" action="NumberSystemOutput.html">
+                    <button class="UpperRow">Combinatorics</button>
+                    </form>
+                </div>
+                    <div class="endLine"></div>
+            </div>
+            <div>
+                <div class="actionButton";>
+                    <form method="get" action="FrontPage.html">
+                    <button class="BottomRow1st">Truth Tables</button>
+                    </form>
+                </div>
+                <div class="actionButton";>
+                    <form method="get" action="FrontPage.html">
+                    <button class="BottomRow">Random Values</button>  
+                    </form>
+                </div>
+                <div class="actionButton";>
+                    <form method="get" action="FrontPage.html">
+                    <button class="BottomRow">Temperature Converter</button>
+                    </form>
+                </div>
+                    <div class="endLine"></div>                                            
         </div>
 
         <div class="emptySpace30px"></div>
@@ -117,10 +128,11 @@
         <div class="tableHeader">
             <table>
                 <thead>
-                    <td>DEC</td>
-                    <td>BIN</td>
-                    <td>OCT</td>
-                    <td>HEX</td>
+                    <tr><td>DEC</td></tr>
+                    <tr><td>BIN</td></tr>
+                    <tr><td>OCT</td></tr>
+                    <tr><td>HEX</td></tr>
+                    
                 </thead>
             </table>
         </div>
@@ -132,10 +144,7 @@
                 <tbody id="newRowsAndCells"></tbody>
             </table>      
         </div>
-        <div class="emptySpace50px"></div>
-
-        <div class="emptySpace50px"></div>
-        
+        <div class="emptySpace100px"></div>   
         <div class="pageBottom"><h3>Developed by Oleksandr Gudenko and Florian Brandsma</h3></div>
     </div>
 

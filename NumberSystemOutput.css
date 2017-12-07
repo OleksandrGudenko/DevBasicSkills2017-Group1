@@ -1,3 +1,7 @@
+table
+{
+    border-collapse: collapse;
+}
 
 .tableBody
 {
@@ -18,28 +22,53 @@
     color: white;
 }
 
-thead td
+thead tr
 {
     text-align: center;
-    width: 27.2%;
+    float: left;
+    margin-left: 35px;
 }
 
+thead tr:first-child
+{
+    margin-left: 20px;
+}
+
+thead tr:last-child
+{
+    margin-left: 37px;
+}
 
 tbody tr
 {
     text-align: center;
 }
 
+tbody td
+{
+    border-right: 1px solid black;
+}
+
+tbody td:last-child
+{
+    border-right: 0px;
+}
+
+tbody tr:nth-child(even)
+{
+    background-color: rgb(237,237,237);
+}
+
+
 .scrollTable
 {
     border-bottom: 1px solid rgb(210, 210, 210);
-
-    width: 100%;
+    width: 100%
 }
 
 .onPageButton
 {
-    background-color: lightskyblue; /* Green */
+    background-color: lightskyblue;
     border: none;
     color: black;
     border: 3px solid black;
@@ -54,3 +83,28 @@ tbody tr
     box-shadow: 0 8px 10px 0 rgba(0,0,0,1), 0 8px 10px 0 rgba(0,0,0,0.19);
 }
 
+.centeredInput
+{
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+.column0
+{
+    width:25%;
+}
+
+.column1
+{
+    width:25%;
+}
+
+.column2
+{
+    width:25%;
+}
+
+.column3
+{
+    width:25%;
+}
