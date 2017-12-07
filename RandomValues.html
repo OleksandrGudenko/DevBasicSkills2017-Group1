@@ -8,9 +8,7 @@
 <script>      
     
     var generatedNumbers = [];
-    var timesGenerated  = [];
-
-    var table = document.getElementById("dynamicTable");
+    var timesGenerated   = [];
 
     function Generate()
     {
@@ -18,83 +16,61 @@
         var max = document.getElementById("max").valueAsNumber;
 
         if(min > max)
+        {
             min = max;
+            document.getElementById("min").value = max;
+        }
 
         var newNumber = Math.floor(Math.random()*(max-min+1)+min)
 
-        console.log(newNumber);
-        
-        if(CompareNumbers(newNumber) == false)
-        {
-            console.log(CompareNumbers(newNumber));
-        } else {
-            
-        }
-    }
+        document.getElementById("newNumber").innerHTML = newNumber.toString();
 
-    function CompareNumbers(input)
-    {
+        var table = document.getElementById("table");
+
         for(var i = 0; i < generatedNumbers.length; i++)
         {
             if(newNumber == generatedNumbers[i])
-            {    
+            {  
+                //Add to existing row
                 timesGenerated[i] ++;
 
-                table.row(i).cell(1).innerHTML = timesGenerated[i].toString();
+                table.rows[i].cells[1].innerHTML = timesGenerated[i];
 
-                return i;
+                return null;
             }
         }
-        return false;
+
+        //Add new row and insert in order
+        var newPosition = 0;
+        
+        while(newNumber > generatedNumbers[newPosition])
+            newPosition++;
+            
+        generatedNumbers.splice(newPosition, 0, newNumber);
+        timesGenerated.splice(newPosition, 0, 1);
+
+        var row = table.insertRow(newPosition);
+
+        var cell = row.insertCell(0);
+        cell.className="column0";
+        cell.innerHTML = newNumber.toString();
+        
+        var cell = row.insertCell(1);
+        cell.className="column1";
+        cell.innerHTML = timesGenerated[timesGenerated.length - 1];
+        
     }
 
+    function Clear()
+    {
+        generatedNumbers = [];
+        timesGenerated   = [];
 
-/*
-        var row = table.insertRow();
+        table = document.getElementById("table");
 
-        row.insertCell(0).innerHTML = Math.floor(Math.random()*(max-min+1)+min);
-        row.insertCell(1).innerHTML = "0";
-*/
-
-//insertRow(1) places a new row on currently existing row[1], pushing row[1] to row[2]
-/*
-        var row = table.insertRow(0);
-            row.insertCell().innerHTML = "0";
-        var row = table.insertRow(1);
-            row.insertCell().innerHTML = "2";
-        var row = table.insertRow(1);
-            row.insertCell().innerHTML = "1";
-
-        Result: 0
-                1
-                2
-*/       
-
-
-/*
-What you want is the splice function on the native array object.
-
-arr.splice(index, 0, item); will insert item into arr at the specified index (deleting 0 items first, that is, it's just an insert).
-
-In this example we will create an array and add an element to it into index 2:
-
-var arr = [];
-arr[0] = "Jani";
-arr[1] = "Hege";
-arr[2] = "Stale";
-arr[3] = "Kai Jim";
-arr[4] = "Borge";
-
-console.log(arr.join());
-arr.splice(2, 0, "Lene");
-console.log(arr.join());
-
-The output of the code above will be:
-
-Jani,Hege,Stale,Kai Jim,Borge
-Jani,Hege,Lene,Stale,Kai Jim,Borge
-
-*/
+        while(table.rows.length > 0)
+            table.deleteRow(0);
+    }
 
 </script>
 
@@ -132,9 +108,11 @@ Jani,Hege,Lene,Stale,Kai Jim,Borge
         <div>
 
             <button onclick="Generate()">Generate</button>
+            <div id="newNumber">0</div>
+            <button onclick="Clear()">Clear</button>
 
             <div class="centeredInput">
-                <input id="min" type="number"> <========>
+                <input id="min" type="number"> random range
                 <input id="max" type="number">
             </div>  
 
@@ -150,8 +128,8 @@ Jani,Hege,Lene,Stale,Kai Jim,Borge
             </div>
 
             <div style="overflow:auto; height:390px;">     
-                <table style="width: 50%">
-                    <tbody id="dynamicTable"></tbody>
+                <table style="width: 50%;">
+                    <tbody id="table"></tbody>
                 </table>      
             </div>
 
