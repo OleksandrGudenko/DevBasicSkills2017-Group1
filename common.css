@@ -177,3 +177,9 @@ h3
 {
     min-height: 15px;
 }
+
+.centeredInput
+{
+    margin-left: 300px;
+    margin-right: 300px;
+}
