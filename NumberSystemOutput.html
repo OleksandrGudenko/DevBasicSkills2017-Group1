@@ -17,14 +17,14 @@
     {
         var table = document.getElementById("newRowsAndCells");
 
-        for(var y = 0; y <= 50; y++)
+        for(var y = 0; y <= 500; y++)
         {
             var row = table.insertRow(y);
 
             for(var x = 0; x < 4; x++)
             {
                 var cell = row.insertCell(x);
-
+                cell.className="column" + x;
                 cell.innerHTML = Convert(y.toString(), ns[x]);
             }
         }
@@ -89,7 +89,7 @@
         <div>
                 <div class="actionButton";>
                     <form method="get" action="NumberSystemConverter.html">
-                    <button href="NumberSystemConverter.html" class="UpperRow"  class="actionButton">Number System Converter</button>
+                    <button href="NumberSystemConverter.html" class="UpperRow1st"  class="actionButton">Number System Converter</button>
                     </form>
                 </div>
                 <div class="actionButton";>
@@ -128,10 +128,11 @@
         <div class="tableHeader">
             <table>
                 <thead>
-                    <td>DEC</td>
-                    <td>BIN</td>
-                    <td>OCT</td>
-                    <td>HEX</td>
+                    <tr><td>DEC</td></tr>
+                    <tr><td>BIN</td></tr>
+                    <tr><td>OCT</td></tr>
+                    <tr><td>HEX</td></tr>
+                    
                 </thead>
             </table>
         </div>
@@ -143,10 +144,7 @@
                 <tbody id="newRowsAndCells"></tbody>
             </table>      
         </div>
-        <div class="emptySpace50px"></div>
-
-        <div class="emptySpace50px"></div>
-        
+        <div class="emptySpace100px"></div>   
         <div class="pageBottom"><h3>Developed by Oleksandr Gudenko and Florian Brandsma</h3></div>
     </div>
 

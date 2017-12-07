@@ -32,6 +32,7 @@ body
 .contents
 {
     width: 1000px;
+    height: 780px;
     background-color: white;
     margin-top: -30px;
     margin-left: auto;
@@ -160,6 +161,10 @@ h3
 {
     border: 1px solid black;
     border-bottom: 1px solid black;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
 }
 
 .emptySpace100px
@@ -182,10 +187,4 @@ h3
 .emptySpace15px
 {
     min-height: 15px;
-}
-
-.centeredInput
-{
-    margin-left: 300px;
-    margin-right: 300px;
 }

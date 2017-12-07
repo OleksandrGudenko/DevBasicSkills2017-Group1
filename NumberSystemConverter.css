@@ -16,20 +16,6 @@
     margin-left:20px;
 }
 
-.table1
-{
-
-    width: 170px;
-    float:left;
-}
-
-.table2
-{
-
-    width: 170px;
-    float:right;
-}
-
 .convertionBar
 {
     text-align: center;
@@ -64,11 +50,40 @@
 
 .stockInputSize1
 {
-    width: 170px;
+    size: 170px;
     float:left;
 }
 .stockInputSize2
 {
-    width: 170px;
+    size: 170px;
     float:right;
+}
+
+.option-select-control1
+{
+    width: 173px;
+    text-align: center;
+    height: auto;
+    overflow: hidden;
+    float:left;
+
+}
+
+.option-select-control2
+{
+    width: 173px;
+    text-align: center;
+    height: auto;
+    overflow: hidden;
+    float:right;
+}
+
+.optionControll:hover{
+    background-color: lightskyblue;
+}
+
+.centeredInput
+{
+    margin-left: 250px;
+    margin-right: 250px;
 }
