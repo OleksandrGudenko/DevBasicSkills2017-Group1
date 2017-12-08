@@ -8,74 +8,82 @@
 
 <script>      
 
-    
+    //               p  q  r
+    var variables = ['p', 'q', 'r']
+    var constants = [ false, true ];
+    //                v  ^
+    var operators = [ 0, 1];
+    var constantValue = [];
 
-    
     function CreateTable()
     {
-        var variables = ['p' ,'q', 'r'];
-        var constants = [ 'F','T'];
-/*
-        var p = [];
-        var q = [];
-*/
+        var table = document.getElementById("table");
+        var row = null;
+
+        var tableHead = document.getElementById("thead");
+
+        console.log(true || false && true);
+
         for(var i = 0; i < variables.length; i++)
-            permutate(constants.length,variables.length,i);
+        {
+            tableHead.children[i].innerHTML = variables[i];
+
+            constantValue[i] = [];
+
+            GenerateConstants(constants.length,variables.length,i);
+
+            while(table.rows.length < Math.pow(constants.length, variables.length))
+            {
+                row = table.insertRow();    
+            }
+
+            for(var j = 0; j < table.rows.length; j++)
+            {
+                var cell = table.rows[j].insertCell();
+                cell.innerHTML = constantValue[i][j];
+            }
+        }
+
+        for(var i = 0; i < table.rows.length; i++)
+        {
+            var cell = table.rows[i].insertCell();
+            cell.innerHTML = Calculate();
+        }
+        
     }
 
-    function permutate(constants, variables, targetVariable)
+    function Calculate(variable, constant)
+    {
+        var result = false;
+
+        for(var i = 0; i < variables.length; i++)
+        {
+            //Calculate:
+        }
+
+        //var result = (constantValue[variable][constant] || constantValue[i][0] && constantValue[i][0]);
+
+        return result;
+    }
+
+    function GenerateConstants(myConstants, myVariables, targetVariable)
     {
         var bool = false;
         var count = 0;
 
-        for(var i = 0; i < Math.pow(constants, variables); i++)
+        for(var i = 0; i < Math.pow(myConstants,  myVariables); i++)
         {
-            console.log(bool ? constants[0] : constants[1])
+            constantValue[targetVariable][i] = bool;
 
             count++
 
-            if(count == Math.pow(constants,variables - (targetVariable + 1)))
+            if(count == Math.pow(myConstants, myVariables - (targetVariable + 1)))
             {
                 bool = !bool;
                 count = 0;
             }
         }
     }
-
-/*
-    function permutations(text, variables, constants)
-    {
-        var test = "";
-
-        if(variables > 0)
-        {
-            for(var i = 0; i < constants; i++)
-            {
-                permutations(text + i.toString(), variables - 1, constants)
-            }
-        } else {
-            test += text;
-            
-        }
-        console.log(test);
-    }
-*/
-
-/*
-
-void permutations(string text, int numberOfDigits, int numberOfChars)
-{
-    if (numberOfDigits > 0)
-        for (int j = 0; j < numberOfChars; j++)
-            permutations(text + j.ToString(), numberOfDigits - 1, numberOfChars);
-    else textBox1.Text += text + "\r\n";
-}
-
-and call:
-
-
-
-*/
 
 </script>
 
@@ -121,15 +129,20 @@ and call:
 
         <div>
             <div>
-                <table style="width: 50%">
-                    <thead id="thead">
-
+                <table style="width: 45%">
+                    <thead>
+                        <tr id="thead">
+                            <td>A</td>
+                            <td>B</td>
+                            <td>C</td>
+                            <td>p v q ^ r</td>
+                        </tr>
                     </thead>
                 </table>
             </div>
 
             <div style="overflow:auto; height:390px;">     
-                <table style="width: 50%;">
+                <table style="width: 15%;">
                     <tbody id="table"></tbody>
                 </table>      
             </div>
