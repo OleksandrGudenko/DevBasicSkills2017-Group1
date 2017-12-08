@@ -16,12 +16,6 @@
     box-shadow: 0 8px 10px 0 rgba(0,0,0,1), 0 8px 10px 0 rgba(0,0,0,0.19);
 }
 
-.centeredInput
-{
-    margin-left:225px;
-    margin-right:225px;
-}
-
 .inputLeft
 {
     float:left;
@@ -30,4 +24,120 @@
 .inputRight
 {
     float:right;
+}
+
+table
+{
+    border-collapse: collapse;
+    font-family: "Roboto", sans-serif;
+}
+
+.tableHead
+{
+    background-color: lightskyblue;
+    font-size: 25px;
+    text-align: center;
+    border: 1px solid black;
+    
+}
+
+tbody tr:nth-child(even)
+{
+    background-color: rgb(237,237,237);
+}
+
+
+
+.column0
+{
+    text-align: center;
+    width: 50%;
+    border-left: 1px solid black;
+    
+}
+
+.column0:first-child
+{
+    border-left: 0px;
+}
+
+
+.column1
+{
+    text-align: center;
+    width: 50%;
+    border-left: 1px solid black;
+    
+}
+
+
+
+.border
+{
+    border:1px solid black;
+}
+
+.lastGeneratedValue
+{
+    font-family: "Roboto", sans-serif;
+    font-size: 35px;
+    text-align: center;
+}
+
+.centeredInput
+{
+    margin-left: 85px;
+    margin-right: 85px;
+}
+
+.textRandomRange
+{
+    font-family: "Roboto", sans-serif;
+    font-size: 25px;
+    text-align: center;
+}
+
+.leftButton
+{
+    float:left;
+    border: 1px solid black;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-family: "Roboto", sans-serif;
+    background-color: white;
+    box-shadow: 0 8px 10px 0 rgba(0,0,0,1), 0 8px 10px 0 rgba(0,0,0,0.19);
+
+}
+
+.rightButton
+{
+    float: right;
+    border: 1px solid black;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-family: "Roboto", sans-serif;
+    background-color: white;
+    box-shadow: 0 8px 10px 0 rgba(0,0,0,1), 0 8px 10px 0 rgba(0,0,0,0.19);
+}
+
+.leftButton:active
+{
+    background-color: lightskyblue;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.rightButton:active
+{
+    background-color: lightskyblue;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }

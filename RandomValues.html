@@ -76,7 +76,7 @@
 </script>
 
 <body>
-    <div class="contents">
+<div class="contents">
             <h1>Math Tools</h1>
             
             <div>
@@ -117,45 +117,62 @@
             </div>
 
 
-        <div class="emptySpace100px"></div>
-        <div class="emptySpace50px"></div>
-        <div class="centeredInput">
-            <div class="inputLeft">
-            <input id="min" type="number"> 
+        <div class="emptySpace45px"></div>
+    
+    <div class="centeredInput">
+            <div>
+                <table style="width:100%;">
+                <tr>
+                        
+                    <td class="inputLeft">
+                    <input id="min" type="number"> 
+                    </td>
+                    
+                    <td class="textRandomRange">Random Range</td>
+                    
+                    <td class="inputRight">
+                    <input id="max" type="number">
+                    </td>
+                </tr>
+                </table>
             </div>
-            <div><h2>Range</h2></div>
-            <div class="inputRight">
-            <input id="max" type="number">
-            </div>
- 
+
             <div class="emptySpace15px";></div>
-        <div>
-            <table style="width: 50%">
-                <thead>
+                <div>
+                    <table class="tableHead" style="width: 100%">
+                    <thead>
                     <tr>
-                        <td>Random value</td>
-                        <td>Times generated</td>
+                    <td >Random value</td>
+                    <td >Times generated</td>
                     </tr>
-                </thead>
-            </table>
-        </div>
+                    </thead>
+                    </table>
+                </div>
+    
+        <div class="emptySpace15px"></div>
+            
+            <div class="border">
 
-        <div style="overflow:auto; height:390px;">     
-            <table style="width: 50%;">
+                <div style="overflow:auto; height:285px;">     
+                <table style="width: 100%;">
                 <tbody id="table"></tbody>
-            </table>      
-        </div>
-        <div>  
-        <button onclick="Generate()">Generate</button>
-        </div>
-            <div id="newNumber">0</div>
-        <div>
-            <button onclick="Clear()">Clear</button>
-        </div>
-       
-        </div>
-
+                </table>      
+                </div>
+            </div>
+            <div class="emptySpace15px"></div>
+            <div class="lastGeneratedValue" id="newNumber">0</div>
+            <div>   
+                    <table style="width: 100%;">
+                    <tbody>
+                    <tr>
+                    <td><button onclick="Generate()" class="leftButton">Generate</button></td>
+                    <td><button onclick="Clear()" class="rightButton">Clear</button></td>
+                    </tr>
+                    </tbody>
+                    </table>                    
+            </div>
     </div>
+</div>
     <div class="pageBottom"><h3>Developed by Oleksandr Gudenko and Florian Brandsma</h3></div>
 </body>
 

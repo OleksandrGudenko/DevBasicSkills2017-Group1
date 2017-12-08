@@ -1,6 +1,7 @@
 table
 {
     border-collapse: collapse;
+    font-family: "Roboto", sans-serif;
 }
 
 .tableBody
@@ -19,7 +20,7 @@ table
     margin-right: 300px;  
     font-size:30px;
     background-color: lightskyblue;
-    color: white;
+    color: black;
 }
 
 thead tr
