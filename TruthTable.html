@@ -8,12 +8,32 @@
 
 <script>      
 
-    //               p  q  r
     var variables = ['p', 'q', 'r']
     var constants = [ false, true ];
-    //                v  ^
-    var operators = [ 0, 1];
+
+    //                
+    var operators = [ 'v', '^'];
     var constantValue = [];
+
+    function CreateMenus()
+    {
+        var menuTable = document.getElementById("menus").insertRow();
+        var newMenu = menuTable.insertCell();
+        
+        var test = document.createElement("select");
+        
+        newMenu.appendChild(test);
+
+        for(var i = 0; i < variables.length + operators.length; i++)
+        {  
+            if(i % 2 == 1)
+            {
+                //variables
+            } else {
+                //operators
+            }
+        }
+    }
 
     function CreateTable()
     {
@@ -48,8 +68,7 @@
         {
             var cell = table.rows[i].insertCell();
             cell.innerHTML = Calculate();
-        }
-        
+        }    
     }
 
     function Calculate(variable, constant)
@@ -87,7 +106,7 @@
 
 </script>
 
-<body onload="CreateTable()">
+<body onload="CreateMenus()">
     <div class="contents">
 
         <h1>Math Tools</h1>
@@ -149,7 +168,28 @@
 
         </div>
 
+        <div>
+            <div>
+                <table>
+                    <tbody id="menus"></tbody>
+                    <td>
+                        <div class="option-select-control1">
+                            <select class="option-select-control1">
+                            <option class="optionControll";>p</option>
+                            <option class="optionControll";>q</option>
+                            <option class="optionControll";>r</option>
+                            <option class="optionControll";>!p</option>
+                            <option class="optionControll";>!q</option>
+                            <option class="optionControll";>!r</option>
+                            </select>
+                        </div>
+                    </td>
+                </table>
+            </div>
+
         
+
+        <div class="pageBottom"><h3>Developed by Oleksandr Gudenko and Florian Brandsma</h3></div>
 
     </div>
     <div class="pageBottom"><h3>Developed by Oleksandr Gudenko and Florian Brandsma</h3></div>
