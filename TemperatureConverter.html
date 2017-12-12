@@ -8,6 +8,7 @@
 
 <script type="text/javascript">
 
+
     </script>
 
 <body>
@@ -51,7 +52,7 @@
                 <div class="endLine"></div>                                            
             </div>
 
-        <div class="emptySpace100px"></div>
+        
         <div class="emptySpace45px"></div>
 
         <div class="centeredInput">
@@ -62,40 +63,68 @@
                     <tr>
                         
                         <td class="option-select-control1">
-                        <button id="buttonPress" class="buttonTemperature">Celsuis</button>
-                        <button id="buttonPress" class="buttonTemperature">Fahrenheit</button>
-                        <button id="buttonPress" class="buttonTemperatureSpeciale">Kelvin</button>
-                        </td>
-                        
-
-                        
-                        <td class="option-select-control2">
-                        <button id="buttonPress" class="buttonTemperature">Celsuis</button>
-                        <button id="buttonPress" class="buttonTemperature">Fahrenheit</button>
                         <button id="buttonPress" class="buttonTemperature">Kelvin</button>
+                        <button id="buttonPress" class="buttonTemperature">Celsuis</button>
+                        <button id="buttonPress" class="buttonTemperatureSpeciale">Fahrenheit</button>
                         </td>
                         
+                        <td class="float-right">
+                        <button id="buttonPress" class="buttonTemperature">Kelvin</button>
+                        <button id="buttonPress" class="buttonTemperature">Celsuis</button>
+                        <button id="buttonPress" class="buttonTemperature">Fahrenheit</button>
+                        </td>
                     </tr>
                     </thead>
                 </table>
                 </div>
-            <div class="emptySpace45px"></div>
-            <div class="option-select-control1">
-                <input class="stockInputSize1" type="number" oninput="celsiusToFahrenheit('0', '1')">
-            </div>
-                
-            <div class="option-select-control2";>
-                <input class="stockInputSize2" type="number" oninput="fahrenheitToCelsius('0', '1')">
-            </div>
             <div class="emptySpace30px"></div>
-            <div>
-                    <div id="slidecontainer">
-                            <p>Default range slider:</p>
-                            <input type="range" min="1" max="100" value="50">
+            <div class="option-select-control1">
+                <input style="width:300px;" type="number" oninput="celsiusToFahrenheit('0', '1')">
             </div>
+        <div class="centeredSliders">
+            <div class="float-right";>
+                <input style="width:300px;" type="number" oninput="fahrenheitToCelsius('0', '1')">
+            </div>
+            <div class="emptySpace100px"></div>
+            <table class="temperature">
+                    <thead>
+                        <tr>
+                        <td class="sliderNames">0</td>
+                        <td style="text-align:center";>0</td>
+                        <td class="float-right">0</td>
+                        </tr>
+                    </thead>
+                </table>
 
+            <div class="emptySpace30px"></div>
+            <div class="sliderContainer">                          
+                <input type="range" min="-273" max="273" value="1">      
+            </div>
+            <div class="sliderContainer">
+                <input type="range" min="-273" max="273" value="1">      
+            </div>
+            <div class="sliderContainer">               
+                <input type="range" min="-273" max="273" value="1">     
+            </div>
+            <div class="emptySpace15px"></div>
         </div>
+        <div class="centeredSlidersNames">
+                <table class="namesUnderSliders">
+                    <thead>
+                    <tr>
+                    <td  class="sliderNames">Kelvin</td>
+                    <td>Celsius</td>
+                    <td  class="float-right">Fahrenheit</td>
+                    </tr>
+                    </thead>
+                </table>
+                </div>
+        </div>
+    
+      
+    
     </div>
+    
     </div>
     <div class="pageBottom"><h3>Developed by Oleksandr Gudenko and Florian Brandsma</h3></div>
     </body>

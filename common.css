@@ -154,6 +154,12 @@ h3
     float: right;
 }
 
+h4
+{
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+}
+
 .pageBottom
 {
     border: 1px solid black;
@@ -168,6 +174,11 @@ h3
 .emptySpace100px
 {
     min-height: 100px;
+}
+
+.emptySpace75px
+{
+    min-height: 75px;
 }
 
 .emptySpace50px

@@ -147,30 +147,37 @@
             </div>
         
             <div class="emptySpace100px"></div>
-            <div class="emptySpace50px"></div>
+            <div class="emptySpace75px"></div>
+
             <div class="centeredInput">
-            <div class="option-select-control1">
-                <input class="stockInputSize1" id="0" oninput="newInput('0', '1')">
-           
-                <select multiple class="option-select-control1" id="01" onchange="newInput('1', '0')">
-                <option class="optionControll";>DEC</option>
-                <option class="optionControll";>BIN</option>
-                <option class="optionControll";>OCT</option>
-                <option class="optionControll";>HEX</option>
-                </select>
-            </div>
+                <div class="inputOrnaments">
 
+                        <input style="width:165px;" id="0" oninput="newInput('0', '1')">
+                        
+                        <input style="width:165px;" class="float-rightBlank" id="1"  oninput="newInput('1', '0')">
+    
+                </div>
+                
+                <div>
+                    <select multiple class="option-select-control1" id="01" onchange="newInput('1', '0')">
+                    <option class="optionControll";>DEC</option>
+                    <option class="optionControll";>BIN</option>
+                    <option class="optionControll";>OCT</option>
+                    <option class="optionControll";>HEX</option>
+                    </select>
+                </div> 
 
-            <div class="option-select-control2";>
-                <input class="stockInputSize2" id="1"  oninput="newInput('1', '0')">
+                <div>
+                    <select multiple class="option-select-control2" id="11" onchange="newInput('0', '1')">
+                    <option class="optionControll";>DEC</option>
+                    <option class="optionControll";>BIN</option>
+                    <option class="optionControll";>OCT</option>
+                    <option class="optionControll";>HEX</option>
+                    </select>
+                </div>
 
-                <select multiple class="option-select-control2" id="11" onchange="newInput('0', '1')">
-                <option class="optionControll";>DEC</option>
-                <option class="optionControll";>BIN</option>
-                <option class="optionControll";>OCT</option>
-                <option class="optionControll";>HEX</option>
-                </select>
-            </div>
+                <h4>to</h4>
+                
             </div>
         </div>
        

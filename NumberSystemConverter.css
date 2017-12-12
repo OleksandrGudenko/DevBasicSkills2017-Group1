@@ -49,15 +49,25 @@
     border-bottom: 1px solid black;
 }
 
-.stockInputSize1
+.float-left
 {
-    size: 170px;
     float:left;
+    border:1px solid black;
+    background-color: lightskyblue;
+    font-family: "Roboto", sans-serif;
 }
-.stockInputSize2
+.float-right
 {
-    size: 170px;
     float:right;
+    border:1px solid black;
+    background-color: lightskyblue;
+    font-family: "Roboto", sans-serif;
+}
+.float-rightBlank
+{
+    float:right;
+
+    font-family: "Roboto", sans-serif;
 }
 
 .option-select-control1
@@ -67,8 +77,15 @@
     height: auto;
     overflow: hidden;
     float:left;
-
+    border:1px solid black;
+    padding-top: 5px;
 }
+
+.option-select-control1:first-child
+{
+    border-top: 0px;
+}
+
 
 .option-select-control2
 {
@@ -77,6 +94,13 @@
     height: auto;
     overflow: hidden;
     float:right;
+    border: 1px solid black;
+    padding-top: 5px;
+}
+
+.option-select-control2:first-child
+{
+    border-top: 0px;
 }
 
 .optionControll:hover{
@@ -87,4 +111,17 @@
 {
     margin-left: 250px;
     margin-right: 250px;
+}
+
+.inputOrnaments
+{
+    border:1px solid black;
+    background-color: lightskyblue;
+    font-family: "Roboto", sans-serif;
+    padding:10px 5px 10px 5px;
+}
+
+.marginTop
+{
+    margin-top: 15px;
 }
