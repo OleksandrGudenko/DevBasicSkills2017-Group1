@@ -11,26 +11,33 @@
 
     var variables = ['p', 'q', 'r'];
     var constants = [ false, true ];
-
     //                v                         ^ 
-    var operators = [ String.fromCharCode(709), String.fromCharCode(708)];
-    var constantValue = [];
+    var operators = [String.fromCharCode(709), String.fromCharCode(708)];
+    
+    var givenVariables = [];
+    var givenConstants = [];
+    var givenOperators = [];
+    var givenNegations = [];
 
     function SetPage()
     {
-        CreateMenus();
+        CreateDropdowns();
+        GetValues();
         CreateTable(); 
     }
 
-    function CreateMenus()
+    function CreateDropdowns()
     {
-        var menuTable = document.getElementById("menus").insertRow();
-        var newMenu = menuTable.insertCell();
+        var dropdownTable = document.getElementById("dropdowns").insertRow();
         
         for(var i = 0; i < (variables.length * 2) - 1; i++)
         {  
-            var newSelect = document.createElement("select");
-            newMenu.appendChild(newSelect);
+            var newCell = dropdownTable.insertCell();
+
+            var newDropdown = document.createElement("select");
+            newDropdown.setAttribute("id", "dropdown" + (dropdownTable.cells.length - 1));
+
+            newCell.appendChild(newDropdown);
 
             if(i % 2 == 0)
             {
@@ -38,27 +45,41 @@
                 for(var j = 0; j < variables.length * 2; j++)
                 {
                     var newOption = document.createElement("option");
-
+ 
                     if(j < variables.length)
                         newOption.text = variables[j];
-                    else
+                    else 
                         newOption.text = String.fromCharCode(172) + variables[j - variables.length];
-                                        //¬
-                    newSelect.add(newOption);
+                        //                                    ¬
+                        newDropdown.add(newOption);
                 }
             } else {
                 //operators
-
                 for(var j = 0; j < operators.length; j++)
                 {
                     var newOption = document.createElement("option");
 
                     newOption.text = operators[j];
 
-                    newSelect.add(newOption);
+                    newDropdown.add(newOption);
                 }
             }
         }
+    }
+
+    function GetValues()
+    {
+        var myDropdowns = document.getElementById("dropdowns").rows[0].cells;
+        
+        givenOperators = [];
+
+        for(let i = 0; i < myDropdowns.length; i++)
+        {
+            var dropdown = document.getElementById("dropdown" + i);
+            console.log(dropdown.selectedIndex);
+        }
+
+        CreateTable();
     }
 
     function CreateTable()
@@ -68,13 +89,13 @@
 
         var tableHead = document.getElementById("thead");
 
-        console.log(true || false && true);
+        //console.log(true || false && true);
 
         for(var i = 0; i < variables.length; i++)
         {
             tableHead.children[i].innerHTML = variables[i];
 
-            constantValue[i] = [];
+            givenConstants[i] = [];
 
             GenerateConstants(constants.length,variables.length,i);
 
@@ -86,36 +107,37 @@
             for(var j = 0; j < table.rows.length; j++)
             {
                 var cell = table.rows[j].insertCell();
-                cell.innerHTML = constantValue[i][j];
+                cell.innerHTML = givenConstants[i][j];
             }
         }
 
         for(var i = 0; i < table.rows.length; i++)
         {
             var cell = table.rows[i].insertCell();
-            cell.innerHTML = Calculate();
+            cell.innerHTML = Calculate(i);
         } 
-        Calculate();   
     }
 
-    function Calculate(variable, constant)
+    function Calculate(constant)
     {
-        var result = false;
+        var result = givenConstants[0][0];
 
-        console.log(variables.length);
-        console.log(constantValue[2][1]);
+        console.log(result);
+        //console.log(givenConstants[2][1]);
         //combination = add 0 and 1
         //add combination and 2
         //add combination and 3
 
-
-
-        for(var i = 0; i < variables.length; i++)
+        for(var variable = 0; variable < operators.length; i++)
         {
             //Calculate:
+            //variable i [constant]
+            //if(||) 
+            //result = result givenConstants[variable][constant]
+
         }
 
-        //var result = (constantValue[variable][constant] || constantValue[i][0] && constantValue[i][0]);
+        //var result = (givenConstants[variable][constant] || givenConstants[i][0] && givenConstants[i][0]);
 
         return result;
     }
@@ -127,7 +149,7 @@
 
         for(var i = 0; i < Math.pow(myConstants,  myVariables); i++)
         {
-            constantValue[targetVariable][i] = bool;
+            givenConstants[targetVariable][i] = bool;
 
             count++
 
@@ -203,7 +225,7 @@
         </div>
 
         <div>
-            <table><tbody id="menus"></tbody></table>
+            <table><tbody id="dropdowns"></tbody></table>
         </div>
     <div class="pageBottom"><h3>Developed by Oleksandr Gudenko and Florian Brandsma</h3></div>
 </body>
