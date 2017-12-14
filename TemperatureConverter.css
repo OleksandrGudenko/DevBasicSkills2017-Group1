@@ -31,6 +31,9 @@
     padding: 9px 22px;
     font-family: "Roboto", sans-serif;
     float: left;
+    color: black;
+    text-align: center;
+    display: inline-block;
 }
 
 .buttonTemperatureSpeciale
@@ -41,6 +44,21 @@
     margin-right: 137px;
     padding: 9px 22px;
     font-family: "Roboto", sans-serif;
+    float: left;
+    color: black;
+    text-align: center;
+}
+
+.buttonTemperature:active
+{
+    background-color: lightskyblue;
+    transform: translateY(4px);
+}
+
+.buttonTemperatureSpeciale:active
+{
+    background-color: lightskyblue;
+    transform: translateY(4px);
 }
 
 .option-select-control1
@@ -97,4 +115,58 @@ table.namesUnderSliders {
 .temperature
 {
     width:62%;
+}
+
+
+.spaceBox
+{
+        float: left;
+        width: 150px;
+        border: 3px solid #73AD21;  
+}
+
+.leftButton
+{
+    float:left;
+    border: 1px solid black;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-family: "Roboto", sans-serif;
+    background-color: white;
+    box-shadow: 0 8px 10px 0 rgba(0,0,0,1), 0 8px 10px 0 rgba(0,0,0,0.19);
+
+}
+
+.rightButton
+{
+    float:right;
+    border: 1px solid black;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-family: "Roboto", sans-serif;
+    background-color: white;
+    box-shadow: 0 8px 10px 0 rgba(0,0,0,1), 0 8px 10px 0 rgba(0,0,0,0.19);
+
+}
+
+.leftButton:active
+{
+    background-color: lightskyblue;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.rightButton:active
+{
+    background-color: lightskyblue;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
