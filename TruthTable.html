@@ -9,21 +9,22 @@
 
 <script>      
 
-    var variables = ['p', 'q', 'r'];
+    var variables = [ 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x' ];
     var constants = [ false, true ];
-    //                v                         ^ 
-    var operators = [String.fromCharCode(709), String.fromCharCode(708)];
-    
+    //                &&                        ||
+    var operators = [ String.fromCharCode(708), String.fromCharCode(709)];
+    var negation  =   String.fromCharCode(172);
+
     var givenVariables = [];
     var givenConstants = [];
     var givenOperators = [];
     var givenNegations = [];
 
-    function SetPage()
+    var equation = "";
+
+    function CreatePage()
     {
-        CreateDropdowns();
-        GetValues();
-        CreateTable(); 
+        CreateDropdowns(); 
     }
 
     function CreateDropdowns()
@@ -33,13 +34,14 @@
         for(var i = 0; i < (variables.length * 2) - 1; i++)
         {  
             var newCell = dropdownTable.insertCell();
-            newCell.className = "Cell" + i;
+            newCell.className = "dropdownCell" + i;
 
             var newDropdown = document.createElement("select");
             newDropdown.setAttribute("id", "dropdown" + (dropdownTable.cells.length - 1));
+            newDropdown.setAttribute("onchange", "GetSum()");
 
             newCell.appendChild(newDropdown);
-
+            
             if(i % 2 == 0)
             {
                 //variables
@@ -50,8 +52,8 @@
                     if(j < variables.length)
                         newOption.text = variables[j];
                     else 
-                        newOption.text = String.fromCharCode(172) + variables[j - variables.length];
-                        //                                    ¬
+                        newOption.text = negation + variables[j - variables.length];
+
                         newDropdown.add(newOption);
                 }
             } else {
@@ -65,19 +67,50 @@
                     newDropdown.add(newOption);
                 }
             }
-        }
+        } 
+
+        GetSum();
     }
 
-    function GetValues()
+    function GetSum()
     {
         var myDropdowns = document.getElementById("dropdowns").rows[0].cells;
         
         givenOperators = [];
+        givenVariables = [];
+        givenNegations = [];
+
+        equation = "";
 
         for(let i = 0; i < myDropdowns.length; i++)
         {
             var dropdown = document.getElementById("dropdown" + i);
-            console.log(dropdown.selectedIndex);
+
+            if(i%2 == 0)
+            {
+                if(dropdown.selectedIndex < dropdown.length / 2)
+                {
+                    //Add to given variables
+                    givenVariables.push(dropdown.selectedIndex);
+                    givenNegations.push(0);
+
+                    equation += variables[dropdown.selectedIndex];
+
+                } else {
+                    givenVariables.push(dropdown.selectedIndex - dropdown.length / 2);
+                    givenNegations.push(1);
+
+                    equation += negation + variables[dropdown.selectedIndex - dropdown.length / 2];
+                }    
+            }
+                
+            if(i%2 == 1)
+            {
+                //console.log(operators[dropdown.selectedIndex]);
+                givenOperators.push(dropdown.selectedIndex);
+
+                equation += operators[dropdown.selectedIndex];
+            }  
         }
 
         CreateTable();
@@ -85,60 +118,89 @@
 
     function CreateTable()
     {
+        ClearTable("table");
         var table = document.getElementById("table");
-        var row = null;
 
-        var tableHead = document.getElementById("thead");
-
-        //console.log(true || false && true);
+        ClearTable("thead");
+        var tableHead = document.getElementById("thead").insertRow();
 
         for(var i = 0; i < variables.length; i++)
         {
-            tableHead.children[i].innerHTML = variables[i];
+            var headCell = tableHead.insertCell();
+            headCell.className = "headCell"+i;
+            headCell.setAttribute("width", 100 / variables.length + "%");
+            headCell.innerHTML = variables[i];
 
             givenConstants[i] = [];
 
             GenerateConstants(constants.length,variables.length,i);
 
             while(table.rows.length < Math.pow(constants.length, variables.length))
-            {
-                row = table.insertRow();    
-            }
+                table.insertRow();    
 
             for(var j = 0; j < table.rows.length; j++)
             {
                 var cell = table.rows[j].insertCell();
-                cell.innerHTML = givenConstants[i][j];
+                cell.className = "tableCell"+i;
+                cell.setAttribute("width", 100 / variables.length + "%");
+                cell.innerHTML = BoolToInt(givenConstants[i][j]);
             }
         }
+
+        var equationCell = tableHead.insertCell();
+        equationCell.className = "headCell"+(tableHead.cells.length-1);
+        equationCell.setAttribute("width", 100 / variables.length + "%");
+        equationCell.innerHTML = equation;
 
         for(var i = 0; i < table.rows.length; i++)
         {
             var cell = table.rows[i].insertCell();
-            cell.innerHTML = Calculate(i);
+            cell.className = "tableCell"+(table.rows[i].cells.length-1);
+            cell.innerHTML = BoolToInt(Calculate(i));
         } 
+    }
+
+    function BoolToInt(myBool)
+    {
+        if(!myBool)
+            return "0";
+        if(myBool)
+            return "1";
+    }
+
+    function ClearTable(myTable)
+    {
+        generatedNumbers = [];
+        timesGenerated   = [];
+
+        table = document.getElementById(myTable);
+
+        while(table.rows.length > 0)
+            table.deleteRow(0);
     }
 
     function Calculate(constant)
     {
-        var result = givenConstants[0][0];
+        var result = givenConstants[givenVariables[0]][constant];
 
-        console.log(result);
-        //console.log(givenConstants[2][1]);
-        //combination = add 0 and 1
-        //add combination and 2
-        //add combination and 3
-
-        for(var variable = 0; variable < operators.length; i++)
+        for(let i = 0; i < givenOperators.length; i++)
         {
-            //Calculate:
-            //variable i [constant]
-            //if(||) 
-            //result = result givenConstants[variable][constant]
-
+            if(givenOperators[i] == 0)
+            {
+                if(givenNegations[i+1] == 0)
+                    result = result && givenConstants[givenVariables[i+1]][constant];
+                if(givenNegations[i+1] == 1)
+                    result = result && !givenConstants[givenVariables[i+1]][constant];   
+            }
+                
+            if(givenOperators[i] == 1)
+            {
+                if(givenNegations[i+1] == 0)
+                    result = result || givenConstants[givenVariables[i+1]][constant];
+                if(givenNegations[i+1] == 1)
+                    result = result || !givenConstants[givenVariables[i+1]][constant];   
+            }
         }
-
-        //var result = (givenConstants[variable][constant] || givenConstants[i][0] && givenConstants[i][0]);
 
         return result;
     }
@@ -164,7 +226,7 @@
 
 </script>
 
-<body onload="SetPage()">
+<body onload="CreatePage()">
     <div class="contents">
 
         <h1>Math Tools</h1>
@@ -207,14 +269,7 @@
         <div class="centeredTable">
             <div class="tableHeading">
                 <table style="width: 100%">
-                    <thead>
-                        <tr id="thead">
-                            <td>A</td>
-                            <td>B</td>
-                            <td>C</td>
-                            <td>p v q ^ r</td>
-                        </tr>
-                    </thead>
+                    <thead id="thead"></thead>
                 </table>
             </div>
             <div class="emptySpace15px"></div>
