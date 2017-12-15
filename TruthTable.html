@@ -33,6 +33,7 @@
         for(var i = 0; i < (variables.length * 2) - 1; i++)
         {  
             var newCell = dropdownTable.insertCell();
+            newCell.className = "Cell" + i;
 
             var newDropdown = document.createElement("select");
             newDropdown.setAttribute("id", "dropdown" + (dropdownTable.cells.length - 1));
