@@ -17,8 +17,38 @@
     margin-left: 85px;
 }
 
-.centeredInput
+.centeredTable
 {
     margin-left: 185px;
     margin-right: 185px;
+}
+
+.tableHeading
+{
+    border: 1px solid black;
+    background-color: lightskyblue;
+    border-collapse: collapse;
+    text-align: center;
+}
+.tableBody
+{
+    border: 1px solid black;
+}
+
+.centeredDropdowns
+{
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+#dropdowns
+{
+    width: 300px;
+    text-align: center;
+    height: auto;
+    overflow: hidden;
+    float:left;
+    border:1px solid black;
+    height: 35px;
+    font-family: "Roboto", sans-serif;
 }
