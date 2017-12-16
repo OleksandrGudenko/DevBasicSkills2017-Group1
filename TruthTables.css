@@ -28,27 +28,91 @@
     border: 1px solid black;
     background-color: lightskyblue;
     border-collapse: collapse;
-    text-align: center;
+
 }
 .tableBody
 {
     border: 1px solid black;
+
+}
+
+.headCell
+{
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 30px;
+    padding-bottom: 5px;
+}
+
+.tableCell
+{
+    text-align: center;
+}
+
+.tableCell:nth-child(even)
+{
+    background-color: rgb(237,237,237);
 }
 
 .centeredDropdowns
 {
-    margin-left: 300px;
-    margin-right: 300px;
+    margin-left: 375px;
+    margin-right: 375px;
 }
 
-#dropdowns
+
+/*all the dropdowns costomizations are here*/
+#dropdown0
 {
-    width: 300px;
-    text-align: center;
-    height: auto;
-    overflow: hidden;
-    float:left;
-    border:1px solid black;
-    height: 35px;
+    border: 1px solid black;
     font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    width: 50px;
+    background-color: lightskyblue;
+    height: 30px;
+    text-align: center;
+}
+#dropdown1
+{
+    border: 1px solid black;
+    font-family: "Roboto", sans-serif;
+    background-color: lightskyblue;
+    font-weight: 700;
+    height: 25px;
+}
+#dropdown2
+{
+    border: 1px solid black;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    width: 50px;
+    background-color: lightskyblue;
+    height: 30px;
+    text-align: center;
+}
+#dropdown3
+{
+    border: 1px solid black;
+    font-family: "Roboto", sans-serif;
+    background-color: lightskyblue;
+    font-weight: 700;
+    height: 25px;
+}
+#dropdown4
+{
+    border: 1px solid black;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    width: 50px;
+    background-color: lightskyblue;
+    height: 30px;
+    text-align: center;
+}
+
+.optionHover
+{
+    background-color: white;
 }

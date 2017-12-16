@@ -9,7 +9,7 @@
 
 <script>      
 
-    var variables = [ 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x' ];
+    var variables = [ 'p', 'q', 'r' ];
     var constants = [ false, true ];
     //                &&                        ||
     var operators = [ String.fromCharCode(708), String.fromCharCode(709)];
@@ -34,7 +34,7 @@
         for(var i = 0; i < (variables.length * 2) - 1; i++)
         {  
             var newCell = dropdownTable.insertCell();
-            newCell.className = "dropdownCell" + i;
+            newCell.className = "dropdownCell";
 
             var newDropdown = document.createElement("select");
             newDropdown.setAttribute("id", "dropdown" + (dropdownTable.cells.length - 1));
@@ -48,7 +48,8 @@
                 for(var j = 0; j < variables.length * 2; j++)
                 {
                     var newOption = document.createElement("option");
- 
+                    newOption.className = "optionHover";
+
                     if(j < variables.length)
                         newOption.text = variables[j];
                     else 
@@ -127,8 +128,8 @@
         for(var i = 0; i < variables.length; i++)
         {
             var headCell = tableHead.insertCell();
-            headCell.className = "headCell"+i;
-            headCell.setAttribute("width", 100 / variables.length + "%");
+            headCell.className = "headCell";
+            headCell.setAttribute("width", 100 / 4 + "%");
             headCell.innerHTML = variables[i];
 
             givenConstants[i] = [];
@@ -141,21 +142,20 @@
             for(var j = 0; j < table.rows.length; j++)
             {
                 var cell = table.rows[j].insertCell();
-                cell.className = "tableCell"+i;
-                cell.setAttribute("width", 100 / variables.length + "%");
+                cell.className = "tableCell";
                 cell.innerHTML = BoolToInt(givenConstants[i][j]);
             }
         }
 
         var equationCell = tableHead.insertCell();
-        equationCell.className = "headCell"+(tableHead.cells.length-1);
+        equationCell.className = "headCell";
         equationCell.setAttribute("width", 100 / variables.length + "%");
         equationCell.innerHTML = equation;
 
         for(var i = 0; i < table.rows.length; i++)
         {
             var cell = table.rows[i].insertCell();
-            cell.className = "tableCell"+(table.rows[i].cells.length-1);
+            cell.className = "tableCell"
             cell.innerHTML = BoolToInt(Calculate(i));
         } 
     }
