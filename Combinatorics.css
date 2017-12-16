@@ -22,23 +22,30 @@
     margin-right: 300px;
 }
 
+.float-left
+{
+    float: left;
+    padding-top: 3px;
+}
 .float-right
 {
     float: right;
-    padding-top: 3px;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
 }
 
 .spaceBox
 {
     border: 1px solid white;
-    min-width: 150px;
+    min-width: 70px;
     float: left;
 }
 
-.spaceBoxDown
+.spaceBoxPossibilities
 {
     border: 1px solid white;
-    width: 70px;
+    width: 5px;
+    float: right;
  
 }
 
@@ -51,19 +58,18 @@
 
 td{
     text-align: center;
+    font-family: "Roboto", sans-serif;
 }
 
 table
 {
-    padding: 0 30px 30px 0;;
-    border-spacing: 0 50px;
-    margin-left: 20px;
-    margin-right: 20px;
+
+    border-spacing: 0 35px;
 }
  .alignedTable
 {
-    margin-left: 50px;
-    margin-right: 85px;
+    margin-left: 300px;
+    margin-right: 300px;
 }
 
 .generate
@@ -76,8 +82,6 @@ table
     font-family: "Roboto", sans-serif;
     background-color: white;
     box-shadow: 0 8px 10px 0 rgba(0,0,0,1), 0 8px 10px 0 rgba(0,0,0,0.19);
-    margin-right: 64px;
-    margin-left: -35px;
 }
 
 .generate:active
@@ -117,13 +121,13 @@ table
     padding-top: 3px;
     padding-left: 3px;
     padding-right: 3px;
-    width: 400px;
+    width: 392px;
     margin-left: 300px;
 }
 
 /* Customize the label (the container) */
 .container {
-    display: block;
+
     position: relative;
     padding-top: 3px;
     padding-left: 35px;
@@ -185,9 +189,24 @@ table
     transform: rotate(45deg);
   }
 
-  .checkmarkCentered
-  {
-      padding-top: 3px;
-  }
-
+.centeredBottom
+{
+    padding-top: 35px;
+    margin-left: 444px;
+    margin-right: 444px;
+}
   
+.propperPositioning
+{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+.amountOfPossibilities
+{
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    float: right;
+}
