@@ -6,127 +6,213 @@
     <link rel="stylesheet" type="text/css" href="TemperatureConverter.css">
 </head>
 
-<script type="text/javascript">
+<script>
+    
+    //0 Kelvin, 1 Celsius, 2 Fahrenheit
+    var currentTemperature = [0,0,0];
+    var activeTemp = [0,0];
+    
+    function Start()
+    {
+        SelectMeasurement(0,0);
+        SelectMeasurement(0,1);
+    }
 
+    function MoveSliders(inputSlider)
+    {
+        var sliders = document.getElementsByClassName("slider");
+        var thermoValue = document.getElementsByClassName("therm");
+        
+        for(let i = 0; i < sliders.length; i++)
+        {
+            currentTemperature[i] = Convert(sliders[inputSlider].valueAsNumber, i);
 
-    </script>
-
-<body>
-<div class="contents">
-            <h1>Math Tools</h1>
+            sliders[i].value = ConvertToCelsius(currentTemperature[i], i);
             
-            <div>
-                <div class="actionButton";>
-                    <form method="get" action="NumberSystemConverter.html">
+            thermoValue[i].innerHTML = currentTemperature[i];
+        }
+
+        for(let i = 0; i < document.getElementsByClassName("input").length; i++)
+        {
+            var myInput = document.getElementById(i)
+            myInput.value = currentTemperature[activeTemp[i]];
+        }
+    }
+
+    function NewInput(thisInput, thisOutput)
+    {
+        var input  = document.getElementById(thisInput);
+        var output = document.getElementById(thisOutput);
+
+        var from = document.getElementById(thisInput  + 1);
+        var to   = document.getElementById(thisOutput + 1);
+
+        output.value = Convert(ConvertToCelsius(input.value, activeTemp[thisInput]), activeTemp[thisOutput]);
+
+        //Less than ideal solution. Replace if time
+        var sliders = document.getElementsByClassName("slider");
+        var thermoValue = document.getElementsByClassName("therm");
+        
+        for(let i = 0; i < sliders.length; i++)
+        {
+            currentTemperature[i] = Convert(ConvertToCelsius(input.value, activeTemp[thisInput]), i);
+
+            sliders[i].value = ConvertToCelsius(currentTemperature[i], i);
+            
+            thermoValue[i].innerHTML = currentTemperature[i];
+        }
+    }
+
+    function ConvertToCelsius(input, from)
+    {
+        if(from == 0)
+            return Math.round(input - 273.15);
+        if(from == 1)
+            return Math.round(input);
+        if(from == 2)
+            return Math.round((input - 32) / 1.8);
+    }
+
+    function Convert(input, to)
+    {
+        if(to == 0)
+            return Math.round(input + 273.15);
+        if(to == 1)
+            return Math.round(input);
+        if(to == 2)
+            return Math.round(input * 1.8 + 32);
+    }
+    
+    function SelectMeasurement(pressedButton, buttonField)
+    {
+        var oldButton = document.getElementById(activeTemp[buttonField]+""+buttonField);
+        oldButton.style.backgroundColor = "white";
+
+        activeTemp[buttonField] = pressedButton;
+        var newButton = document.getElementById(activeTemp[buttonField]+""+buttonField);
+        newButton.style.backgroundColor = "lightskyblue";
+
+        NewInput(1, buttonField);
+        NewInput(0, buttonField);
+    }
+
+</script>
+
+<body onload="Start()">
+    <div class="contents">
+        <h1>Math Tools</h1>
+                
+        <div>
+            <div class="actionButton";>
+                <form method="get" action="NumberSystemConverter.html">
                     <button href="NumberSystemConverter.html" class="UpperRow1st">Number System Converter</button>
-                    </form>
-                </div>
-                <div class="actionButton";>
-                    <form method="get" action="NumberSystemOutput.html">
-                    <button href="" class="UpperRow">Number System Output</button>
-                    </form>
-                </div>
-                <div class="actionButton";>
-                    <form method="get" action="Combinatorics.html">
-                    <button class="UpperRow">Combinatorics</button>
-                    </form>
-                </div>
-                    <div class="endLine"></div>
-                </div>
-                <div>
-                <div class="actionButton";>
-                    <form method="get" action="TruthTable.html">
-                    <button class="BottomRow1st">Truth Tables</button>
-                    </form>
-                </div>
-                <div class="actionButton";>
-                    <form method="get" action="RandomValues.html">
-                    <button class="BottomRow">Random Values</button>  
-                    </form>
-                </div>
-                <div class="actionButton";>
-                    <form method="get" action="TemperatureConverter.html">
-                    <button class="onPageButton">Temperature Converter</button>
-                    </form>
-                </div>
-                <div class="endLine"></div>                                            
+                </form>
             </div>
 
-        
+            <div class="actionButton";>
+                <form method="get" action="NumberSystemOutput.html">
+                    <button href="" class="UpperRow">Number System Output</button>
+                </form>
+            </div>
+
+            <div class="actionButton";>
+                <form method="get" action="Combinatorics.html">
+                    <button class="UpperRow">Combinatorics</button>
+                </form>
+            </div>
+            <div class="endLine"></div>
+        </div>
+
+        <div>
+            <div class="actionButton";>
+                <form method="get" action="TruthTable.html">
+                    <button class="BottomRow1st">Truth Tables</button>
+                </form>
+            </div>
+
+            <div class="actionButton";>
+                <form method="get" action="RandomValues.html">
+                    <button class="BottomRow">Random Values</button>  
+                </form>
+            </div>
+
+            <div class="actionButton";>
+                <form method="get" action="TemperatureConverter.html">
+                    <button class="onPageButton">Temperature Converter</button>
+                </form>
+            </div>
+
+            <div class="endLine"></div>                                            
+        </div>
+    
         <div class="emptySpace45px"></div>
 
         <div class="centeredInput">
-
-                <div>
+            <div>
                 <table>
-                <thead>
-                    <tr>
-                        
-                        <td class="option-select-control1">
-                            <button id="buttonPress" class="buttonTemperature">Kelvin</button>
-                            <button id="buttonPress" class="buttonTemperature">Celsuis</button>
-                            <button id="buttonPress" class="buttonTemperatureSpeciale">Fahrenheit</button>
-                        </td>
-                        <div class="option-select-control1"></div>
-                        <td class="option-select-control1">
-                            <button id="buttonPress" class="buttonTemperature">Kelvin</button>
-                            <button id="buttonPress" class="buttonTemperature">Celsuis</button>
-                            <button id="buttonPress" class="buttonTemperature">Fahrenheit</button>
-                        </td>
-                    </tr>
-                    </thead>
-                </table>
-                </div>
-            <div class="emptySpace30px"></div>
-            <div class="option-select-control1">
-                <input style="width:295px;" type="number" oninput="celsiusToFahrenheit('0', '1')">
-            </div>
-        <div class="centeredSliders">
-            <div class="float-right";>
-                <input style="width:295px;" type="number" oninput="fahrenheitToCelsius('0', '1')">
-            </div>
-            <div class="emptySpace100px"></div>
-            <table class="temperature">
                     <thead>
                         <tr>
-                        <td class="sliderNames">0</td>
-                        <td style="text-align:center";>0</td>
-                        <td class="float-right">0</td>
+                            <td class="option-select-control1">
+                                <button class="buttonTemperature"          id="00" onclick="SelectMeasurement(0,0)">Kelvin</button>
+                                <button class="buttonTemperature"          id="10" onclick="SelectMeasurement(1,0)">Celsuis</button>
+                                <button class="buttonTemperatureSpeciale"  id="20" onclick="SelectMeasurement(2,0)">Fahrenheit</button>
+                            </td>
+                            
+                            <td class="option-select-control1">
+                                <button class="buttonTemperature"          id="01" onclick="SelectMeasurement(0,1)">Kelvin</button>
+                                <button class="buttonTemperature"          id="11" onclick="SelectMeasurement(1,1)">Celsuis</button>
+                                <button class="buttonTemperature"          id="21" onclick="SelectMeasurement(2,1)">Fahrenheit</button>
+                            </td>
                         </tr>
                     </thead>
                 </table>
+            </div>
 
             <div class="emptySpace30px"></div>
-            <div class="sliderContainer">                          
-                <input type="range" min="-273" max="273" value="1">      
+
+            <div class="option-select-control1">
+                <input class="input" style="width:295px;" type="number" id="0" oninput="NewInput('0', '1')">
             </div>
-            <div class="sliderContainer">
-                <input type="range" min="-273" max="273" value="1">      
-            </div>
-            <div class="sliderContainer">               
-                <input type="range" min="-273" max="273" value="1">     
-            </div>
-            <div class="emptySpace15px"></div>
-        </div>
-        <div class="centeredSlidersNames">
-                <table class="namesUnderSliders">
-                    <thead>
-                    <tr>
-                    <td  class="sliderNames">Kelvin</td>
-                    <td>Celsius</td>
-                    <td  class="float-right">Fahrenheit</td>
-                    </tr>
-                    </thead>
-                </table>
+            <div class="float-right";>
+                    <input class="input" style="width:295px;" type="number" id="1" oninput="NewInput('1', '0')">
                 </div>
+                <div class="emptySpace100px"></div>
+                
+            <div class="thermoSliders">
+                <table style="width: 500px">
+                    <tr class="temperature">
+                        <td class="therm">0</td>
+                        <td class="therm">0</td>
+                        <td class="therm">0</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="sliderContainer">                          
+                            <input type="range" min="-273" max="273" value="0" class="slider" oninput="MoveSliders(0)">      
+                        </td>
+
+                        <td class="sliderContainer">
+                            <input type="range" min="-273" max="273" value="0" class="slider" oninput="MoveSliders(1)">      
+                        </td>
+
+                        <td class="sliderContainer">               
+                            <input type="range" min="-273" max="273" value="0" class="slider" oninput="MoveSliders(2)">     
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="sliderNames">Kelvin</td>
+                        <td class="sliderNames">Celsius</td>
+                        <td class="sliderNames">Fahrenheit</td>
+                    </tr>
+                </table>
+            </div>
+
+ 
+            </div>
         </div>
-    
-      
-    
-    </div>
-    
     </div>
     <div class="pageBottom"><h3>Developed by Oleksandr Gudenko and Florian Brandsma</h3></div>
-    </body>
+</body>
 
 </html>

@@ -135,7 +135,7 @@ button
 
 button:hover
 {
-    background-color: lightskyblue;
+    background-color: lightskyblue !important;
 }
 
 h1 
