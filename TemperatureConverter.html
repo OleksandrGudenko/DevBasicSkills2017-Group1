@@ -18,49 +18,56 @@
         SelectMeasurement(0,1);
     }
 
-    function MoveSliders(inputSlider)
+    function SelectMeasurement(pressedButton, buttonField)
     {
-        var sliders = document.getElementsByClassName("slider");
-        var thermoValue = document.getElementsByClassName("therm");
+        var oldButton = document.getElementById(activeTemp[buttonField]+""+buttonField);
+        oldButton.style.backgroundColor = "white";
+
+        activeTemp[buttonField] = pressedButton;
         
-        for(let i = 0; i < sliders.length; i++)
-        {
-            currentTemperature[i] = Convert(sliders[inputSlider].valueAsNumber, i);
+        var newButton = document.getElementById(activeTemp[buttonField]+""+buttonField);
+        newButton.style.backgroundColor = "lightskyblue";
 
-            sliders[i].value = ConvertToCelsius(currentTemperature[i], i);
-            
-            thermoValue[i].innerHTML = currentTemperature[i];
-        }
+        ConvertTemperature(document.getElementById(1 - buttonField).value, activeTemp[1 - buttonField]);
+    }
 
-        for(let i = 0; i < document.getElementsByClassName("input").length; i++)
+    function NewInput(thisInput, activeInput)
+    {    
+        if(activeInput)
         {
-            var myInput = document.getElementById(i)
-            myInput.value = currentTemperature[activeTemp[i]];
+            ConvertTemperature(document.getElementById(thisInput).value, activeTemp[thisInput]);
+        } else {
+            for(let i = 0; i < document.getElementsByClassName("input").length; i++)
+                document.getElementById(i).value = currentTemperature[activeTemp[i]];
         }
     }
 
-    function NewInput(thisInput, thisOutput)
+    function MoveSliders(inputSlider, activeInput)
     {
-        var input  = document.getElementById(thisInput);
-        var output = document.getElementById(thisOutput);
-
-        var from = document.getElementById(thisInput  + 1);
-        var to   = document.getElementById(thisOutput + 1);
-
-        output.value = Convert(ConvertToCelsius(input.value, activeTemp[thisInput]), activeTemp[thisOutput]);
-
-        //Less than ideal solution. Replace if time
         var sliders = document.getElementsByClassName("slider");
-        var thermoValue = document.getElementsByClassName("therm");
         
-        for(let i = 0; i < sliders.length; i++)
+        if(activeInput)
         {
-            currentTemperature[i] = Convert(ConvertToCelsius(input.value, activeTemp[thisInput]), i);
+            ConvertTemperature(sliders[inputSlider].valueAsNumber, inputSlider);
+        } else {
+            var thermoValue = document.getElementsByClassName("therm");
 
-            sliders[i].value = ConvertToCelsius(currentTemperature[i], i);
-            
-            thermoValue[i].innerHTML = currentTemperature[i];
+            for(let i = 0; i < sliders.length; i++)
+            {
+                sliders[i].value = currentTemperature[1];
+                
+                thermoValue[i].innerHTML = currentTemperature[i];
+            }
         }
+    }
+
+    function ConvertTemperature(input, from)
+    {
+        for(let i = 0; i < currentTemperature.length; i++)
+            currentTemperature[i] = Convert(ConvertToCelsius(input, from), i);
+        
+        NewInput(0, false);
+        MoveSliders(0, false);
     }
 
     function ConvertToCelsius(input, from)
@@ -83,19 +90,6 @@
             return Math.round(input * 1.8 + 32);
     }
     
-    function SelectMeasurement(pressedButton, buttonField)
-    {
-        var oldButton = document.getElementById(activeTemp[buttonField]+""+buttonField);
-        oldButton.style.backgroundColor = "white";
-
-        activeTemp[buttonField] = pressedButton;
-        var newButton = document.getElementById(activeTemp[buttonField]+""+buttonField);
-        newButton.style.backgroundColor = "lightskyblue";
-
-        NewInput(1, buttonField);
-        NewInput(0, buttonField);
-    }
-
 </script>
 
 <body onload="Start()">
@@ -171,10 +165,10 @@
             <div class="emptySpace30px"></div>
 
             <div class="option-select-control1">
-                <input class="input" style="width:295px;" type="number" id="0" oninput="NewInput('0', '1')">
+                <input class="input" style="width:295px;" type="number" id="0" oninput="NewInput('0', true)">
             </div>
             <div class="float-right";>
-                    <input class="input" style="width:295px;" type="number" id="1" oninput="NewInput('1', '0')">
+                    <input class="input" style="width:295px;" type="number" id="1" oninput="NewInput('1', true)">
                 </div>
                 <div class="emptySpace100px"></div>
                 
@@ -188,15 +182,15 @@
                     
                     <tr>
                         <td class="sliderContainer">                          
-                            <input type="range" min="-273" max="273" value="0" class="slider" oninput="MoveSliders(0)">      
+                            <input type="range" min="-273" max="273" value="0" class="slider" oninput="MoveSliders(0, true)">      
                         </td>
 
                         <td class="sliderContainer">
-                            <input type="range" min="-273" max="273" value="0" class="slider" oninput="MoveSliders(1)">      
+                            <input type="range" min="-273" max="273" value="0" class="slider" oninput="MoveSliders(1, true)">      
                         </td>
 
                         <td class="sliderContainer">               
-                            <input type="range" min="-273" max="273" value="0" class="slider" oninput="MoveSliders(2)">     
+                            <input type="range" min="-273" max="273" value="0" class="slider" oninput="MoveSliders(2, true)">     
                         </td>
                     </tr>
 
