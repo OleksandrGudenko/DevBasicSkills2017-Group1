@@ -68,13 +68,11 @@ table
 
 .centeredDropdowns
 {
-    margin-left: 375px;
+    margin-left: 370px;
     margin-right: 375px;
 }
 
-
-/*all the dropdowns costomizations are here*/
-#dropdown0
+#dropdown
 {
     border: 1px solid black;
     font-family: "Roboto", sans-serif;
@@ -83,43 +81,4 @@ table
     width: 50px;
     height: 30px;
     text-align: center;
-}
-#dropdown1
-{
-    border: 1px solid black;
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    height: 30px;
-}
-#dropdown2
-{
-    border: 1px solid black;
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    width: 50px;
-    height: 30px;
-    text-align: center;
-}
-#dropdown3
-{
-    border: 1px solid black;
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    height: 30px;
-}
-#dropdown4
-{
-    border: 1px solid black;
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    width: 50px;
-    height: 30px;
-    text-align: center;
-}
-
-.optionHover
-{
-    background-color: white;
 }
