@@ -44,7 +44,6 @@
             
             if(i % 2 == 0)
             {
-                //variables
                 for(var j = 0; j < variables.length * 2; j++)
                 {
                     var newOption = document.createElement("option");
@@ -58,7 +57,6 @@
                         newDropdown.add(newOption);
                 }
             } else {
-                //operators
                 for(var j = 0; j < operators.length; j++)
                 {
                     var newOption = document.createElement("option");
@@ -91,7 +89,6 @@
             {
                 if(dropdown.selectedIndex < dropdown.length / 2)
                 {
-                    //Add to given variables
                     givenVariables.push(dropdown.selectedIndex);
                     givenNegations.push(0);
 
@@ -107,7 +104,6 @@
                 
             if(i%2 == 1)
             {
-                //console.log(operators[dropdown.selectedIndex]);
                 givenOperators.push(dropdown.selectedIndex);
 
                 equation += operators[dropdown.selectedIndex];
@@ -129,7 +125,7 @@
         {
             var headCell = tableHead.insertCell();
             headCell.className = "headCell";
-            headCell.setAttribute("width", 100 / 4 + "%");
+            headCell.setAttribute("width", 100 / (variables.length+1) + "%");
             headCell.innerHTML = variables[i];
 
             givenConstants[i] = [];
@@ -141,15 +137,18 @@
 
             for(var j = 0; j < table.rows.length; j++)
             {
+                table.rows[j].className = "tableRow";
+
                 var cell = table.rows[j].insertCell();
                 cell.className = "tableCell";
+                cell.setAttribute("width", 100 / (variables.length+1) + "%");
                 cell.innerHTML = BoolToInt(givenConstants[i][j]);
             }
         }
 
         var equationCell = tableHead.insertCell();
         equationCell.className = "headCell";
-        equationCell.setAttribute("width", 100 / variables.length + "%");
+        equationCell.setAttribute("width", 100 / (variables.length+1) + "%");
         equationCell.innerHTML = equation;
 
         for(var i = 0; i < table.rows.length; i++)
