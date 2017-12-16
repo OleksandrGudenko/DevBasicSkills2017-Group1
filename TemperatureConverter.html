@@ -12,6 +12,12 @@
     var currentTemperature = [0,0,0];
     var activeTemp = [0,0];
     
+    //A work-around so the last used input field will not update automatically,
+    //so that it's possible to type in negative numbers.
+    //0 Input, 1 Slider
+    var lastInput = 0;
+    var fieldUsedLast = true;
+
     function Start()
     {
         SelectMeasurement(0,0);
@@ -20,6 +26,8 @@
 
     function SelectMeasurement(pressedButton, buttonField)
     {
+        fieldUsedLast = false;
+
         var oldButton = document.getElementById(activeTemp[buttonField]+""+buttonField);
         oldButton.style.backgroundColor = "white";
 
@@ -35,10 +43,22 @@
     {    
         if(activeInput)
         {
+            //Record which field was used last,
+            //so we may skip it later
+            lastInput = thisInput;
+            fieldUsedLast = true;
+
             ConvertTemperature(document.getElementById(thisInput).value, activeTemp[thisInput]);
         } else {
-            for(let i = 0; i < document.getElementsByClassName("input").length; i++)
-                document.getElementById(i).value = currentTemperature[activeTemp[i]];
+            
+            if(fieldUsedLast == false)
+            {
+                for(let i = 0; i < document.getElementsByClassName("input").length; i++)
+                    document.getElementById(i).value = currentTemperature[activeTemp[i]];
+            } else {
+                
+                document.getElementById(1 - lastInput).value = currentTemperature[activeTemp[1 - lastInput]];
+            }
         }
     }
 
@@ -48,7 +68,9 @@
         
         if(activeInput)
         {
-            ConvertTemperature(sliders[inputSlider].valueAsNumber, inputSlider);
+            fieldUsedLast = false;
+
+            ConvertTemperature(sliders[inputSlider].valueAsNumber, 1);
         } else {
             var thermoValue = document.getElementsByClassName("therm");
 
@@ -93,7 +115,9 @@
 </script>
 
 <body onload="Start()">
+
     <div class="contents">
+
         <h1>Math Tools</h1>
                 
         <div>
