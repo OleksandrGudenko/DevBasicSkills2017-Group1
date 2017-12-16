@@ -9,7 +9,7 @@
 
 <script>      
 
-    var variables = [ 'p', 'q', 'r' ];
+    var variables = ['P','Q','R'];
     var constants = [ false, true ];
     //                &&                        ||
     var operators = [ String.fromCharCode(708), String.fromCharCode(709)];
@@ -37,7 +37,7 @@
             newCell.className = "dropdownCell";
 
             var newDropdown = document.createElement("select");
-            newDropdown.setAttribute("id", "dropdown" + (dropdownTable.cells.length - 1));
+            newDropdown.setAttribute("id", "dropdown");
             newDropdown.setAttribute("onchange", "GetSum()");
 
             newCell.appendChild(newDropdown);
@@ -83,7 +83,7 @@
 
         for(let i = 0; i < myDropdowns.length; i++)
         {
-            var dropdown = document.getElementById("dropdown" + i);
+            var dropdown = document.getElementById("dropdown");
 
             if(i%2 == 0)
             {
