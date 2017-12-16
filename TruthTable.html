@@ -37,7 +37,8 @@
             newCell.className = "dropdownCell";
 
             var newDropdown = document.createElement("select");
-            newDropdown.setAttribute("id", "dropdown");
+            newDropdown.className = "dropdown";
+            newDropdown.setAttribute("id", "dropdown"+i);
             newDropdown.setAttribute("onchange", "GetSum()");
 
             newCell.appendChild(newDropdown);
@@ -83,7 +84,7 @@
 
         for(let i = 0; i < myDropdowns.length; i++)
         {
-            var dropdown = document.getElementById("dropdown");
+            var dropdown = document.getElementById("dropdown"+i);
 
             if(i%2 == 0)
             {
