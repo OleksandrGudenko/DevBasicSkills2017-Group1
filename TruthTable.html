@@ -132,10 +132,12 @@
             GenerateConstants(constants.length,variables.length,i);
 
             while(table.rows.length < Math.pow(constants.length, variables.length))
-                table.insertRow();    
+                table.insertRow();
 
             for(var j = 0; j < table.rows.length; j++)
             {
+                table.rows[j].className = "tableRow";
+
                 var cell = table.rows[j].insertCell();
                 cell.className = "tableCell"+i;
                 cell.setAttribute("width", 100 / (variables.length+1) + "%");
