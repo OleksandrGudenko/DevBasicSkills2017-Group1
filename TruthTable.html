@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html>
-<meta charset="utf-8"/> 
+    <meta charset="utf-8"/> 
 <head>
     <title>Math Tools</title>
     <link rel="stylesheet" type="text/css" href="common.css">
@@ -12,7 +12,7 @@
     var variables = ['P','Q','R'];
     var constants = [ false, true ];
     //                &&                        ||
-    var operators = [ String.fromCharCode(708), String.fromCharCode(709)];
+    var operators = [ String.fromCharCode(708), String.fromCharCode(709), "⊕"];
     var negation  =   String.fromCharCode(172);
 
     var givenVariables = [];
@@ -185,20 +185,30 @@
 
         for(let i = 0; i < givenOperators.length; i++)
         {
+            var statement = givenConstants[givenVariables[i+1]][constant];
+
             if(givenOperators[i] == 0)
             {
                 if(givenNegations[i+1] == 0)
-                    result = result && givenConstants[givenVariables[i+1]][constant];
+                    result = result && statement;
                 if(givenNegations[i+1] == 1)
-                    result = result && !givenConstants[givenVariables[i+1]][constant];   
+                    result = result && !statement;   
             }
                 
             if(givenOperators[i] == 1)
             {
                 if(givenNegations[i+1] == 0)
-                    result = result || givenConstants[givenVariables[i+1]][constant];
+                    result = result || statement;
                 if(givenNegations[i+1] == 1)
-                    result = result || !givenConstants[givenVariables[i+1]][constant];   
+                    result = result || !statement;   
+            }
+            if(givenOperators[i] == 2)
+            {
+                if(givenNegations[i+1] == 0)
+                    result = result ? !statement : statement;
+                    
+                if(givenNegations[i+1] == 1)
+                    result = result ? statement : !statement; 
             }
         }
 

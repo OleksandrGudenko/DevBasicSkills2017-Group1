@@ -1,117 +1,118 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-            <title>Math Tools</title>
-            <link rel="stylesheet" type="text/css" href="common.css">
-            <link rel="stylesheet" type="text/css" href="NumberSystemConverter.css">
+    <meta charset="utf-8"/> 
+<head>
+        <title>Math Tools</title>
+        <link rel="stylesheet" type="text/css" href="common.css">
+        <link rel="stylesheet" type="text/css" href="NumberSystemConverter.css">
 
-    </head>
+</head>
 
-    <script>
-        
-        //NumberSystem //DEC     BIN     OCT     HEX
-        var ns =      [  10,     2,      8,      16];
+<script>
+    
+    //NumberSystem //DEC     BIN     OCT     HEX
+    var ns =      [  10,     2,      8,      16];
 
-        var letters = ['A','B','C','D','E','F'];
-        var numbers = [10 ,11 ,12 ,13 ,14 ,15 ];
+    var letters = ['A','B','C','D','E','F'];
+    var numbers = [10 ,11 ,12 ,13 ,14 ,15 ];
 
-        function Start()
+    function Start()
+    {
+        document.getElementById(0).value = 0;
+        document.getElementById(1).value = 0;
+
+        document.getElementById("01").selectedIndex = 0;
+        document.getElementById("11").selectedIndex = 0;
+    }
+
+    function newInput(thisInput, thisOutput)
+    {
+        var input = document.getElementById(thisInput);
+        var output = document.getElementById(thisOutput);
+
+        var from = document.getElementById(thisInput + 1);
+        var to = document.getElementById(thisOutput + 1);
+
+        output.value = Convert(ConvertToDec(input.value, ns[from.selectedIndex]), ns[to.selectedIndex]);
+    }
+
+    function ConvertToDec(input, base)
+    {
+        input += "";
+        var value = [];
+        var result = 0;
+
+        value = ToArray(input);
+
+        if(base == 16)
+            value = SwapValues(value, letters, numbers);
+
+        for(var i = 0; i < value.length; i++)
+            result += value[i] * Math.pow(base, ((value.length - 1) - i));
+                    
+        return result;
+    }
+
+    function ToArray(input)
+    {
+        var result = [];
+
+        for(var i = 0; i < input.length; i++)
+            result[result.length] = input[i];
+
+        return result;
+    }
+
+    function Convert(input, base)
+    {
+        var value = [];
+        var result = "";
+
+        while(input > 0)
         {
-            document.getElementById(0).value = 0;
-            document.getElementById(1).value = 0;
-
-            document.getElementById("01").selectedIndex = 0;
-            document.getElementById("11").selectedIndex = 0;
+            value[value.length] = (input % base);
+            input = Math.floor(input / base);   
         }
 
-        function newInput(thisInput, thisOutput)
+        if(value.length == 0)
+            value = [0];
+
+        if(base == 2)
         {
-            var input = document.getElementById(thisInput);
-            var output = document.getElementById(thisOutput);
-
-            var from = document.getElementById(thisInput + 1);
-            var to = document.getElementById(thisOutput + 1);
-
-            output.value = Convert(ConvertToDec(input.value, ns[from.selectedIndex]), ns[to.selectedIndex]);
+            while(value.length % 4 != 0)
+                value[value.length] = 0; 
         }
 
-        function ConvertToDec(input, base)
+        if(base == 16)
+            value = SwapValues(value, numbers, letters);
+
+        value.reverse();
+
+        for(var i = 0; i < value.length; i++)
+            result += value[i];
+
+        return result;
+    }
+
+    function SwapValues(input, from, to)
+    {
+        var result = [];
+
+        for(var i = 0; i < input.length; i++)
         {
-            input += "";
-            var value = [];
-            var result = 0;
+            result[result.length] = input[i];
 
-            value = ToArray(input);
-
-            if(base == 16)
-                value = SwapValues(value, letters, numbers);
-
-            for(var i = 0; i < value.length; i++)
-                result += value[i] * Math.pow(base, ((value.length - 1) - i));
-                        
-            return result;
-        }
-
-        function ToArray(input)
-        {
-            var result = [];
-
-            for(var i = 0; i < input.length; i++)
-                result[result.length] = input[i];
-
-            return result;
-        }
-
-        function Convert(input, base)
-        {
-            var value = [];
-            var result = "";
-
-            while(input > 0)
+            for(var j = 0; j < from.length; j++)
             {
-                value[value.length] = (input % base);
-                input = Math.floor(input / base);   
+                if(result[i] == from[j])
+                    result[i] = to[j];
             }
-
-            if(value.length == 0)
-                value = [0];
-
-            if(base == 2)
-            {
-                while(value.length % 4 != 0)
-                    value[value.length] = 0; 
-            }
-
-            if(base == 16)
-                value = SwapValues(value, numbers, letters);
-
-            value.reverse();
-
-            for(var i = 0; i < value.length; i++)
-                result += value[i];
-
-            return result;
         }
 
-        function SwapValues(input, from, to)
-        {
-            var result = [];
+        return result;
+    }
 
-            for(var i = 0; i < input.length; i++)
-            {
-                result[result.length] = input[i];
-
-                for(var j = 0; j < from.length; j++)
-                {
-                    if(result[i] == from[j])
-                        result[i] = to[j];
-                }
-            }
-
-            return result;
-        }
-
-    </script>
+</script>
 
 <body onload="Start()">
 

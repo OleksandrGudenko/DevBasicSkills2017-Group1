@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+    <meta charset="utf-8"/> 
 <head>
     <title>Math Tools</title>
     <link rel="stylesheet" type="text/css" href="common.css">
@@ -20,8 +21,10 @@
 
     function Start()
     {
-        SelectMeasurement(0,0);
-        SelectMeasurement(0,1);
+        ConvertTemperature(document.getElementById(0).value, 1)
+
+        SelectMeasurement(1,0);
+        SelectMeasurement(1,1);
     }
 
     function SelectMeasurement(pressedButton, buttonField)

@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+    <meta charset="utf-8"/> 
 <head>
     <title>Math Tools</title>
     <link rel="stylesheet" type="text/css" href="common.css">
@@ -28,7 +29,7 @@
             document.getElementById("min").value = max;
         }
 
-        var newNumber = Math.floor(Math.random()*(max-min+1)+min)
+        var newNumber = Math.floor(Math.random()*(max-min+1)+min);
 
         document.getElementById("newNumber").innerHTML = newNumber.toString();
 

@@ -1,18 +1,97 @@
 
 <!DOCTYPE HTML>
 <html>
+    <meta charset="utf-8"/> 
 <head>
     <title>Math Tools</title>
+
     <link rel="stylesheet" type="text/css" href="common.css">
     <link rel="stylesheet" type="text/css" href="Combinatorics.css">
 </head>
 
-<script type="text/javascript">
+<script>
 
+var options = [ [   'A','B','C','D','E',
+                    'F','G','H','I','J',
+                    'K','L','M','N','O',
+                    'P','Q','R','S','T',
+                    'U','V','W','X','Y','Z' ],
+
+                [   '0','1','2','3','4',
+                    '5','6','7','8','9'     ] ];
+
+var dropdowns       = document.getElementsByClassName("dropdowns");
+var licensePlate    = document.getElementsByClassName("onDisplay");
+
+function Start()
+{
+    for(let i = 0; i < dropdowns.length; i++)
+    {
+        dropdowns[i].selectedIndex = 0;
+    }
+
+    SetRules();
+}
+
+function SetRules()
+{
+    var possibilities = document.getElementById("possibilities");
+    possibilities.innerHTML = CountPossibilities(document.getElementById("checkbox").checked);
+}
+
+function CountPossibilities(duplicates)
+{
+    var result = 1;
+    var usedOptions = [0,0];
+
+    for(let i = 0; i < dropdowns.length; i++)
+    {
+        if(duplicates)
+        {
+            result *= options[dropdowns[i].selectedIndex].length;
+        } else {
+
+            result *= (options[dropdowns[i].selectedIndex].length - usedOptions[dropdowns[i].selectedIndex]);
+
+            usedOptions[dropdowns[i].selectedIndex] ++;
+        }
+    }
+    return result;
+}
+
+function GeneratePlate()
+{
+    var usedSymbols = [[],[]];
+    
+    for(let i = 0; i < licensePlate.length; i++)
+    {
+        var max = options[dropdowns[i].selectedIndex].length - 1;
+
+        if(document.getElementById("checkbox").checked)
+            licensePlate[i].innerHTML = options[dropdowns[i].selectedIndex][GetRandomSymbol(0, max)];
+        
+        if(!document.getElementById("checkbox").checked)
+        {
+            var randomSymbol = GetRandomSymbol(0, max);
+
+            while(usedSymbols[dropdowns[i].selectedIndex].indexOf(randomSymbol) > -1)
+                randomSymbol = GetRandomSymbol(0, max);
+            
+            licensePlate[i].innerHTML = options[dropdowns[i].selectedIndex][randomSymbol];
+
+            usedSymbols[dropdowns[i].selectedIndex].push(randomSymbol);
+        }
+    }
+}
+
+function GetRandomSymbol(min, max)
+{
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
 
 </script>
 
-<body>
+<body onload="Start()">
 <div class="contents">
     <h1>Math Tools</h1>
     
@@ -61,28 +140,28 @@
         <div class="centeredInputDropdowns" style="overflow: hidden;">
             <div class="emptySpace50px"></div>
         <div>
-            <select multiple class="dropdowns" style="float:left;">
+            <select multiple class="dropdowns" style="float:left;" onchange="SetRules()">
                 <option class="dropdownsHover" class="options1" value="letters">A-Z</option>
                 <option class="dropdownsHover" value="numbers">0-9</option>
             </select>
-            <select multiple class="dropdowns" style="float:left;">
+            <select multiple class="dropdowns" style="float:left;" onchange="SetRules()">
                 <option class="dropdownsHover" value="letters">A-Z</option>
                 <option class="dropdownsHover" value="numbers">0-9</option>
                   </select>
-            <select multiple class="dropdowns" style="float:left;">
+            <select multiple class="dropdowns" style="float:left;" onchange="SetRules()">
                 <option class="dropdownsHover" value="letters">A-Z</option>
                 <option class="dropdownsHover" value="numbers">0-9</option>
             </select>
 
-            <select multiple class="dropdowns" style="float:right;">
+            <select multiple class="dropdowns" style="float:right;" onchange="SetRules()">
                 <option class="dropdownsHover" value="letters">A-Z</option>
                 <option class="dropdownsHover" value="numbers">0-9</option>
             </select>
-            <select multiple class="dropdowns" style="float:right;">
+            <select multiple class="dropdowns" style="float:right;" onchange="SetRules()">
                 <option class="dropdownsHover" value="letters">A-Z</option>
                 <option class="dropdownsHover" value="numbers">0-9</option>
             </select>
-            <select multiple class="dropdowns" style="float:right;">
+            <select multiple class="dropdowns" style="float:right;" onchange="SetRules()">
                 <option class="dropdownsHover" value="letters">A-Z</option>
                 <option class="dropdownsHover" value="numbers">0-9</option>
             </select>
@@ -91,21 +170,21 @@
         <div class="emptySpace15px"></div>
         <div class="propperPositioning">        
         <div class="float-left">
-            <label class="container">Dublicates
-            <input type="checkbox">
+            <label class="container" >Dublicates
+                <input type="checkbox" id="checkbox" onclick="SetRules()">
             <span class="checkmark"></span>
             </label>
         </div>
         <div class="float-right">Possibilities</div> 
         <div class="spaceBoxPossibilities"></div>
-        <div class="amountOfPossibilities">0</div>
+        <div class="amountOfPossibilities" id="possibilities">0</div>
         </div>
 
         <div class="alignedTable">
             <table style="width: 100%;">
             <tbody>
                 <tr>
-                <td class="onDisplay">HI</td>
+                <td class="onDisplay"></td>
                 <td class="onDisplay"></td>
                 <td class="onDisplay"></td>
                 <td class="spaceBox"></td>
@@ -117,7 +196,7 @@
             </table>
         </div>
             <div class="centeredBottom">
-            <button class="generate">Generate</button>
+            <button class="generate" onclick="GeneratePlate()">Generate</button>
             </div>
         </div>   
 </div>
