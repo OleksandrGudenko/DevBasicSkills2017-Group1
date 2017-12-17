@@ -186,6 +186,11 @@ h4
     min-height: 75px;
 }
 
+.emptySpace70px
+{
+    min-height: 70px;
+}
+
 .emptySpace50px
 {
     min-height: 50px; 
