@@ -176,6 +176,11 @@ h4
     font-family: "Roboto", sans-serif;
 }
 
+input
+{
+    font-family: "Roboto", sans-serif;
+}
+
 .emptySpace100px
 {
     min-height: 100px;

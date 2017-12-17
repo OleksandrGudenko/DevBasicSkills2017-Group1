@@ -143,3 +143,8 @@ input[type=range]::-webkit-slider-runnable-track
     -webkit-appearance: none;
     margin-top: -2px;
 }
+
+.propperPadding
+{
+    margin-top: -25px;
+}
