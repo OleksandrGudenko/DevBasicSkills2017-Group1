@@ -16,6 +16,12 @@
     var letters = ['A','B','C','D','E','F'];
     var numbers = [10 ,11 ,12 ,13 ,14 ,15 ];
 
+    var allowedCharacters = [['0','1','2','3','4','5','6','7','8','9']
+			                ,['0','1']
+			                ,['0','1','2','3','4','5','6','7']
+			                ,['0','1','2','3','4','5','6','7','8','9',
+                             ,'A','B','C','D','E','F']];
+
     function Start()
     {
         document.getElementById(0).value = 0;
@@ -32,6 +38,19 @@
 
         var from = document.getElementById(thisInput + 1);
         var to = document.getElementById(thisOutput + 1);
+
+        input.value = input.value.toLocaleUpperCase();
+
+        for(let i = 0; i < input.value.length; i++)
+        {
+            if(allowedCharacters[from.selectedIndex].indexOf(input.value.charAt(input.value.length - 1)) < 0)
+            {
+                document.getElementById("warning").innerHTML = "Input invalid";
+                break;
+            } else {
+                document.getElementById("warning").innerHTML = "";
+            }
+        }
 
         output.value = Convert(ConvertToDec(input.value, ns[from.selectedIndex]), ns[to.selectedIndex]);
     }
@@ -173,8 +192,8 @@
         <div class="centeredInput">
 
             <div class="inputOrnaments">
-                <input style="width:165px;"                             id="0" oninput="newInput('0', '1')">
-                <input style="width:165px;" class="float-rightBlank"    id="1" oninput="newInput('1', '0')">
+                <input style="width:165px; "                             id="0" oninput="newInput('0', '1')">
+                <input style="width:165px; " class="float-rightBlank"    id="1" oninput="newInput('1', '0')">
             </div>
             
             <div>
@@ -197,7 +216,7 @@
 
             <h4 style="text-align: center">to</h4>
             <div class="emptySpace15px"></div>
-            <h2 style="text-align: center" id="warning">Input Invalid</h2>
+            <h2 style="text-align: center" id="warning"></h2>
         </div>
     </div>
      
