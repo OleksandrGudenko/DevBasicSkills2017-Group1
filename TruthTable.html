@@ -122,7 +122,7 @@
         ClearTable("thead");
         var tableHead = document.getElementById("thead").insertRow();
 
-        for(var i = 0; i < variables.length; i++)
+        for(let i = 0; i < variables.length; i++)
         {
             var headCell = tableHead.insertCell();
             headCell.className = "headCell";
@@ -136,7 +136,7 @@
             while(table.rows.length < Math.pow(constants.length, variables.length))
                 table.insertRow();
 
-            for(var j = 0; j < table.rows.length; j++)
+            for(let j = 0; j < table.rows.length; j++)
             {
                 table.rows[j].className = "tableRow";
 
@@ -220,7 +220,7 @@
         var bool = false;
         var count = 0;
 
-        for(var i = 0; i < Math.pow(myConstants,  myVariables); i++)
+        for(let i = 0; i < Math.pow(myConstants,  myVariables); i++)
         {
             givenConstants[targetVariable][i] = bool;
 
@@ -250,7 +250,7 @@
             <div class="divider"></div>
 
             <form method="get" action="NumberSystemOutput.html">
-                <button href="" class="UpperRow">Number System Output</button>
+                <button href="" class="UpperRow">Number System Outputs</button>
             </form>
 
             <form method="get" action="Combinatorics.html">
